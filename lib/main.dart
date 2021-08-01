@@ -13,7 +13,6 @@ import 'package:wq_fotune/page/mine/exchange_manager.dart';
 import 'package:wq_fotune/page/mine/recharge_page.dart';
 import 'package:wq_fotune/utils/UIData.dart';
 import 'package:wq_fotune/utils/device_utils.dart';
-import 'package:wq_fotune/utils/screen/size_fit.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

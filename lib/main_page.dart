@@ -43,9 +43,18 @@ class MainPageState extends State<MainPageWidget> {
       tabImages = [
         [Icon(Icons.home), Icon(Icons.home, color: UIData.primary_color)],
         [Icon(Icons.cloud), Icon(Icons.cloud, color: UIData.primary_color)],
-        [Icon(Icons.account_balance_wallet), Icon(Icons.account_balance_wallet, color: UIData.primary_color)],
-        [Icon(Icons.account_box), Icon(Icons.account_box, color: UIData.primary_color)],
-        [Icon(Icons.account_box), Icon(Icons.account_box, color: UIData.primary_color)],
+        [
+          Icon(Icons.account_balance_wallet),
+          Icon(Icons.account_balance_wallet, color: UIData.primary_color)
+        ],
+        [
+          Icon(Icons.account_box),
+          Icon(Icons.account_box, color: UIData.primary_color)
+        ],
+        [
+          Icon(Icons.account_box),
+          Icon(Icons.account_box, color: UIData.primary_color)
+        ],
       ];
       _pageList = [
         HomePage(),
