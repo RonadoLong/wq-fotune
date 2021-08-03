@@ -1,47 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/api/Mine.dart';
-import 'package:wq_fotune/api/User.dart';
-import 'package:wq_fotune/common/EventBus.dart';
-import 'package:wq_fotune/common/NavigatorUtils.dart';
-import 'package:wq_fotune/global.dart';
+
 import 'package:wq_fotune/model/ticker.dart';
 import 'package:wq_fotune/model/user_info.dart';
-import 'package:wq_fotune/page/common/CommonWidget.dart';
 import 'package:wq_fotune/res/styles.dart';
-import 'package:wq_fotune/utils/StringSharedPreferences.dart';
-import 'package:wq_fotune/utils/UIData.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import '../market_choice_trade.dart';
-import 'add_api.dart';
-
-// class MarketSymbol extends StatefulWidget {
-//   final Ticker ticker;
-//
-//   final Map currentSymbol;
-//
-//   final Map dataMap;
-//
-//   final List apiList;
-//
-//   final UserInfo userInfo;
-//
-//   final Function onDataChange;
-//
-//    MarketSymbol(
-//       {Key key,
-//       this.ticker,
-//       this.dataMap,
-//       this.userInfo,
-//       this.onDataChange,
-//       this.apiList,
-//       this.currentSymbol})
-//       : super(key: key);
-//
-//   @override
-//   _MarketSymbolState createState() => _MarketSymbolState();
-// }
+import 'package:wq_fotune/utils/ui_data.dart';
 
 class MarketSymbol extends StatelessWidget {
   Ticker ticker;
@@ -65,7 +28,6 @@ class MarketSymbol extends StatelessWidget {
       this.currentSymbol});
 
   bool isVisible = true;
-
 
   Color changeColor() {
     if (ticker != null && ticker.change.toString().contains("-")) {
@@ -112,7 +74,9 @@ class MarketSymbol extends StatelessWidget {
                   child: new Row(
                     children: <Widget>[
                       new Text(
-                        currentSymbol["symbol"]?.replaceAll("-", " / "),
+                        currentSymbol.length != 0
+                            ? currentSymbol["symbol"]?.replaceAll("-", " / ")
+                            : '',
                         style: TextStyles.MediumBlackTextSize14,
                       ),
                     ],

@@ -1,16 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screenutil.dart';
-import 'package:wq_fotune/api/Robot.dart';
+import 'package:wq_fotune/api/robot.dart';
 import 'package:wq_fotune/common/CustomAppBar.dart';
 import 'package:wq_fotune/componets/circular_load.dart';
 import 'package:wq_fotune/componets/refresh.dart';
-import 'package:wq_fotune/page/common/CommonWidget.dart';
-import 'package:wq_fotune/page/trade/view/trade_items.dart';
 import 'package:wq_fotune/res/styles.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 import 'package:wq_fotune/utils/toast-utils.dart';
-import 'package:wq_fotune/utils/StringSharedPreferences.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 
 class MarketChoiceTrade extends StatefulWidget {
@@ -49,6 +45,7 @@ class MarketChoiceTradeState extends State<MarketChoiceTrade> {
 
   void getData(val) async {
     getSymbols(val).then((res) {
+      print("getSymbols ----> $res");
       if (res.code == 0) {
         var data = res.data.keys.toList();
         setState(() {

@@ -1,17 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'package:wq_fotune/common/CustomAppBar.dart';
-import 'package:wq_fotune/common/CustomLogImage.dart';
 import 'package:wq_fotune/componets/fInput_widget.dart';
 import 'package:wq_fotune/componets/login_form_code.dart';
 import 'package:wq_fotune/componets/custom_btn.dart';
-import 'package:wq_fotune/utils/MD5Utils.dart';
 import 'package:wq_fotune/utils/toast-utils.dart';
-import 'package:wq_fotune/utils/UIData.dart';
 import 'package:wq_fotune/page/login/retrieve_password.dart';
-import 'package:wq_fotune/api/User.dart';
-
-
+import 'package:wq_fotune/api/user.dart';
 
 class ForgetPWDPage extends StatefulWidget {
   @override
@@ -40,7 +34,8 @@ class _ForgetPWDPageState extends State<ForgetPWDPage> {
         alignment: Alignment.center,
         children: <Widget>[
           new Padding(
-            padding: new EdgeInsets.only(left: 20.0, top:30, right: 20.0, bottom: 0.0),
+            padding: new EdgeInsets.only(
+                left: 20.0, top: 30, right: 20.0, bottom: 0.0),
             child: new Column(
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
@@ -73,17 +68,14 @@ class _ForgetPWDPageState extends State<ForgetPWDPage> {
                       Flexible(
                         flex: 1,
                         child: LoginFormCode(
-                          available:
-                          _phoneController.text.trim().length >= 11,
+                          available: _phoneController.text.trim().length >= 11,
                           onTapCallback: () {
                             var phone = _phoneController.text.trim();
                             if (phone.length == 0 || phone.length < 11) {
                               showToast("请填写正确的手机号");
                               return;
                             }
-                            var params = {
-                              "phone": phone.toString()
-                            };
+                            var params = {"phone": phone.toString()};
                             PostCode(params).then((res) {
                               print("获取验证码 =========== $res");
                               if (res.code == 0) {
@@ -104,13 +96,16 @@ class _ForgetPWDPageState extends State<ForgetPWDPage> {
               ],
             ),
           ),
-          RoundBtn(content: "下一步", onPress: (){
-            Navigator.push(
-                context,
-                new MaterialPageRoute(
-                    builder: (context) =>
-                    new RetrievePasswordPage(_phoneController.text.trim(), _codeController.text.trim())));
-          })
+          RoundBtn(
+              content: "下一步",
+              onPress: () {
+                Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                        builder: (context) => new RetrievePasswordPage(
+                            _phoneController.text.trim(),
+                            _codeController.text.trim())));
+              })
         ],
       ),
     );

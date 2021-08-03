@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/api/Robot.dart';
+import 'package:wq_fotune/api/robot.dart';
 import 'package:wq_fotune/model/strategy.dart';
 import 'package:wq_fotune/page/mine/view/del_modal_view.dart';
 import 'package:wq_fotune/utils/toast-utils.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 import 'package:wq_fotune/componets/fInput_widget.dart';
 
 class marketHeader extends StatelessWidget {
@@ -53,7 +53,9 @@ class marketHeader extends StatelessWidget {
                     Text(
                       detailData.status == 0
                           ? "初始状态"
-                          : detailData.status == 1 ? "运行中" : "暂停",
+                          : detailData.status == 1
+                              ? "运行中"
+                              : "暂停",
                       style: TextStyle(color: UIData.red_color, fontSize: 13),
                     ),
                   ],
@@ -108,7 +110,8 @@ class marketHeader extends StatelessWidget {
                         ),
                         onPressed: () async {
                           if (detailData.apiKey == "") {
-                            var res = await Navigator.pushNamed(context, '/exchange');
+                            var res =
+                                await Navigator.pushNamed(context, '/exchange');
                             refreshData();
                             return;
                           }

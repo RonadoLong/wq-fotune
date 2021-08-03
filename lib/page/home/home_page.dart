@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/api/Mine.dart';
+import 'package:wq_fotune/api/mine.dart';
 import 'package:wq_fotune/common/CustomAppBar.dart';
 import 'package:wq_fotune/componets/circular_load.dart';
 import 'package:wq_fotune/componets/home_coursel.dart';
@@ -11,7 +11,7 @@ import 'package:wq_fotune/page/home/view/home_ticker_header.dart';
 import 'package:wq_fotune/page/home/view/home_ticks_item.dart';
 import 'package:wq_fotune/page/home/view/home_property.dart';
 import 'package:wq_fotune/utils/toast-utils.dart';
-import 'package:wq_fotune/api/Home.dart';
+import 'package:wq_fotune/api/home.dart';
 import 'package:wq_fotune/page/common/CommonWidget.dart';
 import 'package:wq_fotune/model/user_info.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';

@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/api/Mine.dart';
+import 'package:wq_fotune/api/mine.dart';
 import 'package:wq_fotune/common/CustomAppBar.dart';
 import 'package:wq_fotune/componets/circular_load.dart';
 import 'package:wq_fotune/componets/refresh.dart';
 import 'package:wq_fotune/page/mine/view/ifc_wallet_view.dart';
 import 'package:wq_fotune/page/mine/view/usdt_wallet_view.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 import 'package:wq_fotune/common/EventBus.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 

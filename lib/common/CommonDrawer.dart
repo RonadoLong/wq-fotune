@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 import 'package:wq_fotune/utils/about_tile.dart';
-
 
 class CommonDrawer extends StatelessWidget {
   @override

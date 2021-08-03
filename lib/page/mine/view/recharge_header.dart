@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
 class RechargeHeader extends StatelessWidget {
   final String title;
@@ -27,5 +27,4 @@ class RechargeHeader extends StatelessWidget {
       ),
     );
   }
-
 }

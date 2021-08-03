@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 import 'package:wq_fotune/page/home/view/home_header.dart';
 
 class HomeBanner extends StatefulWidget {

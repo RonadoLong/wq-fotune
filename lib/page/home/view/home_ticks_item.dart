@@ -4,13 +4,14 @@ import 'package:wq_fotune/model/ticker.dart';
 import 'package:wq_fotune/page/common/CommonWidget.dart';
 import 'package:wq_fotune/page/trade/market_page.dart';
 import 'package:wq_fotune/res/styles.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
 class HomeTicksItem extends StatefulWidget {
   final data;
   final length;
   final index;
-  HomeTicksItem({Key key, this.data,this.length,this.index}) : super(key: key);
+  HomeTicksItem({Key key, this.data, this.length, this.index})
+      : super(key: key);
 
   @override
   _HomeTicksItemState createState() => _HomeTicksItemState();
@@ -58,22 +59,25 @@ class _HomeTicksItemState extends State<HomeTicksItem> {
 
   @override
   Widget build(BuildContext context) {
-    return _buildItem(widget.data,widget.length,widget.index);
+    return _buildItem(widget.data, widget.length, widget.index);
   }
 
-  _buildItem(item,length,index) {
+  _buildItem(item, length, index) {
     var index = item['symbol'].indexOf("-");
-    var left = item['symbol'].substring(0,index);
-    var right = item['symbol'].substring(index +1);
+    var left = item['symbol'].substring(0, index);
+    var right = item['symbol'].substring(index + 1);
     return GestureDetector(
       child: Container(
-        padding: EdgeInsets.fromLTRB(0,10.0,0,10.0),
+        padding: EdgeInsets.fromLTRB(0, 10.0, 0, 10.0),
         margin: EdgeInsets.fromLTRB(0.0, 0, 5.0, 1.0),
         decoration: BoxDecoration(
             color: Colors.white,
             border: new Border(
-                bottom: BorderSide(color: length - 1 == index ? Colors.white : UIData.border_color, width: 0.5))
-        ),
+                bottom: BorderSide(
+                    color: length - 1 == index
+                        ? Colors.white
+                        : UIData.border_color,
+                    width: 0.5))),
         child: new Column(
           children: <Widget>[
             new Row(
@@ -127,7 +131,7 @@ class _HomeTicksItemState extends State<HomeTicksItem> {
           ],
         ),
       ),
-      onTap: (){
+      onTap: () {
         _bus.emit('goMarket');
       },
     );

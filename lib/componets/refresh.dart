@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 import 'package:flutter_easyrefresh/ball_pulse_header.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_easyrefresh/bezier_bounce_footer.dart';

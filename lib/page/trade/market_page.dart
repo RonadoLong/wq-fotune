@@ -1,10 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/api/Mine.dart';
-import 'package:wq_fotune/api/User.dart';
+import 'package:wq_fotune/api/mine.dart';
 import 'package:wq_fotune/common/CustomAppBar.dart';
-import 'package:wq_fotune/common/EventBus.dart';
 import 'package:wq_fotune/common/NavigatorUtils.dart';
 import 'package:wq_fotune/componets/circular_load.dart';
 import 'package:wq_fotune/componets/loding_btn.dart';
@@ -18,12 +16,11 @@ import 'package:wq_fotune/page/trade/view/grid_modal.dart';
 import 'package:wq_fotune/page/trade/view/market_account.dart';
 import 'package:wq_fotune/page/trade/view/market_grid_widget.dart';
 import 'package:wq_fotune/page/trade/view/market_item.dart';
-import 'package:wq_fotune/page/trade/view/market_symbol.dart';
 import 'package:wq_fotune/page/mine/view/flat_modal_view.dart';
-import 'package:wq_fotune/utils/StringSharedPreferences.dart';
+import 'package:wq_fotune/utils/store.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:wq_fotune/utils/toast-utils.dart';
-import 'package:wq_fotune/api/Robot.dart';
+import 'package:wq_fotune/api/robot.dart';
 import 'package:wq_fotune/page/mine/view/del_modal_view.dart';
 
 class MarketPage extends StatefulWidget {
@@ -194,16 +191,15 @@ class MarketPageState extends State<MarketPage> {
 
   //根据最低价和利润率生成网格参数(无限网格使用)
   void _getAutoGridParams(isAI, type, name) async {
-    var params = {};
+    var params = {
+      "exchange": dataMap['exchange'].toString().toLowerCase(),
+      "symbol": dataMap['symbol'].replaceAll('-', '').toLowerCase(),
+    };
     //AI
     if (isAI) {
-      params = {
-        "exchange": dataMap['exchange'],
-        "symbol": dataMap['symbol'].replaceAll('-', '').toLowerCase(),
-        "isAI": isAI.toString()
-      };
+      params["isAI"] = isAI.toString();
     }
-    getAutoGridParams(isAI, params).then((res) {
+    getAutoGridParams(params).then((res) {
       if (res.code == 200) {
         setState(() {
           infiniteAiData = res.data;

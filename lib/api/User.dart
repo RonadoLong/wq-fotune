@@ -1,8 +1,6 @@
-import 'package:flustars/flustars.dart';
 import 'package:wq_fotune/model/base_resp.dart';
-import 'package:wq_fotune/model/user_info.dart';
 
-import 'HttpUtils.dart';
+import 'http_utils.dart';
 
 // ignore: non_constant_identifier_names
 Future<BaseResp> RegisterUser(params) async {

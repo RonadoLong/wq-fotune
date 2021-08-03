@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
 class HomeItem extends StatelessWidget {
-
   final Map data;
   final Function press;
 
@@ -10,7 +9,7 @@ class HomeItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  GestureDetector(
+    return GestureDetector(
       onTap: () {
         this.press(data['id']);
       },
@@ -26,7 +25,7 @@ class HomeItem extends StatelessWidget {
                 offset: Offset(0.0, 1.0), //阴影xy轴偏移量
                 blurRadius: 10.0, //阴影模糊程度
                 spreadRadius: 0.1 //阴影扩散程度
-            )
+                )
           ],
         ),
         child: new Column(

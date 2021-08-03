@@ -1,19 +1,14 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:wq_fotune/api/Robot.dart';
+import 'package:wq_fotune/api/robot.dart';
 import 'package:wq_fotune/common/CustomAppBar.dart';
 import 'package:wq_fotune/componets/circular_load.dart';
 import 'package:wq_fotune/componets/custom_btn.dart';
-import 'package:wq_fotune/componets/fInput_widget.dart';
-import 'package:wq_fotune/componets/loding_btn.dart';
 import 'package:wq_fotune/componets/parameters_flnput_widget.dart';
 import 'package:wq_fotune/componets/refresh.dart';
-import 'package:wq_fotune/componets/wallet_flnput_widget.dart';
 import 'package:wq_fotune/res/styles.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 import 'package:wq_fotune/utils/toast-utils.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 

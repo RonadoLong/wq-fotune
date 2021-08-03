@@ -1,18 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/api/Home.dart';
-import 'package:wq_fotune/api/Mine.dart';
-import 'package:wq_fotune/api/Robot.dart';
+import 'package:wq_fotune/api/mine.dart';
+import 'package:wq_fotune/api/robot.dart';
 import 'package:wq_fotune/common/CustomAppBar.dart';
 import 'package:wq_fotune/common/NavigatorUtils.dart';
 import 'package:wq_fotune/componets/refresh.dart';
 import 'package:wq_fotune/global.dart';
-import 'package:wq_fotune/model/user_info.dart';
 import 'package:wq_fotune/page/policy/policy_detail.dart';
 import 'package:wq_fotune/page/policy/view/policy_banner.dart';
 import 'package:wq_fotune/page/policy/view/policy_item.dart';
 import 'package:wq_fotune/page/trade/view/add_api.dart';
-import 'package:wq_fotune/utils/UIData.dart';
 import 'package:wq_fotune/utils/toast-utils.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 

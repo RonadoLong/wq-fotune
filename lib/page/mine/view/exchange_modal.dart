@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wq_fotune/componets/fInput_widget.dart';
 import 'package:wq_fotune/componets/popup_input.dart';
 import 'package:wq_fotune/utils/toast-utils.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
 class ExchangeModel {
   var _ApiKeyController = new TextEditingController();
@@ -30,7 +30,9 @@ class ExchangeModel {
                   child: Container(
                     width: inputW - 100,
                     height: 22,
-                    child: Text(val["exchange"],),
+                    child: Text(
+                      val["exchange"],
+                    ),
                   ),
                   value: val["id"]));
             });
@@ -39,7 +41,8 @@ class ExchangeModel {
               underline:
                   Container(height: 1, color: Colors.green.withOpacity(0.7)),
               value: _value,
-              isDense: true, iconSize: 30,
+              isDense: true,
+              iconSize: 30,
               onChanged: (T) {
                 state(() {
                   this._value = T;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:wq_fotune/res/styles.dart';
 import 'package:wq_fotune/utils/format_date.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
 class ExchangeItem extends StatelessWidget {
   final Map item;
@@ -73,7 +73,7 @@ class ExchangeItem extends StatelessWidget {
                               maxLines: 2,
                               style: TextStyles.RegularGrey2TextSize13,
                             ),
-                            Padding(padding: EdgeInsets.only(top:6.0)),
+                            Padding(padding: EdgeInsets.only(top: 6.0)),
                             new Text(
                               "时间：" + formatDateToString(item['created_at']),
                               style: TextStyles.RegularGrey2TextSize13,
@@ -95,8 +95,7 @@ class ExchangeItem extends StatelessWidget {
                             ),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
-                                side:
-                                    BorderSide(color: UIData.blue_color)),
+                                side: BorderSide(color: UIData.blue_color)),
                             onPressed: () {
                               this.onTap(1);
                             },

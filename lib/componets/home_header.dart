@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
 class HomeHeader extends StatelessWidget {
   final String title;

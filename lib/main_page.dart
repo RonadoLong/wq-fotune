@@ -6,7 +6,7 @@ import 'package:wq_fotune/page/home/home_page.dart';
 import 'package:wq_fotune/page/policy/policy_page.dart';
 import 'package:wq_fotune/page/mine/mine_page.dart';
 import 'package:wq_fotune/page/transaction/transaction_page.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
 class MainPageWidget extends StatefulWidget {
   @override

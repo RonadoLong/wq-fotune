@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:wq_fotune/res/styles.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
 ///上拉加载更多
 Widget BuildLoadMoreView() {
@@ -96,7 +96,7 @@ Widget buildEmptyAndBtnView({
                   style: TextStyles.RegularBlackTextSize14,
                 ),
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     onTap();
                   },
                   child: Text(

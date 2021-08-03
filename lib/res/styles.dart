@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
 import 'colors.dart';
 import 'dimens.dart';

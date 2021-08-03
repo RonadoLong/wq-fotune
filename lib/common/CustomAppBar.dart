@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
 Widget buildBar(String title, {actions}) {
   return AppBar(

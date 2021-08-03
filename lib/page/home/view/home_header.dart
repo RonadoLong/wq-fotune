@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/api/Home.dart';
+import 'package:wq_fotune/api/home.dart';
 import 'package:wq_fotune/model/user_info.dart';
 import 'package:wq_fotune/common/EventBus.dart';
 import 'package:wq_fotune/page/account/account_page.dart';
 import 'package:wq_fotune/page/common/CommonWidget.dart';
-import 'package:wq_fotune/api/User.dart';
+import 'package:wq_fotune/api/user.dart';
 import 'package:wq_fotune/common/NavigatorUtils.dart';
 import 'package:wq_fotune/res/styles.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
 class HomeHeader extends StatefulWidget {
   @override

@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/api/Mine.dart';
+import 'package:wq_fotune/api/mine.dart';
 import 'package:wq_fotune/common/CustomAppBar.dart';
 import 'package:wq_fotune/componets/circular_load.dart';
 import 'package:wq_fotune/model/exchange_account.dart';
 import 'package:wq_fotune/page/common/CommonWidget.dart';
 import 'package:wq_fotune/utils/toast-utils.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
 class ExchangeDetails extends StatefulWidget {
   @override

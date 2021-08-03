@@ -1,5 +1,5 @@
 import 'package:wq_fotune/model/base_resp.dart';
-import 'HttpUtils.dart';
+import 'http_utils.dart';
 
 class MineAPI {
   /// 客服联系
@@ -62,16 +62,15 @@ class MineAPI {
     var res = BaseResp.fromJson(response);
     return res;
   }
- 
- //获取app版本
- //by heqingqing 2020/07/09
+
+  //获取app版本
+  //by heqingqing 2020/07/09
   static Future<BaseResp> getAppVersion(params) async {
     var url = "/common/appVersion/$params";
     var response = await Http().get(url);
     var res = BaseResp.fromJson(response);
     return res;
   }
-
 
   //usdt钱包
   static Future<BaseResp> getWalletUsdt() async {
@@ -104,6 +103,7 @@ class MineAPI {
     var res = BaseResp.fromJson(response);
     return res;
   }
+
   //钱包兑换计算
   static Future<BaseResp> postWalletConvertCoin(params) async {
     var url = "/wallet/convertCoin";
@@ -135,11 +135,4 @@ class MineAPI {
     var res = BaseResp.fromJson(response);
     return res;
   }
-
-
-
-
-
-
-
 }

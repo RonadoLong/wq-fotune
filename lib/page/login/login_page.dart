@@ -2,17 +2,16 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:wq_fotune/api/User.dart';
+import 'package:wq_fotune/api/user.dart';
 import 'package:wq_fotune/common/CustomAppBar.dart';
 import 'package:wq_fotune/common/CustomLogImage.dart';
 import 'package:wq_fotune/componets/fInput_widget.dart';
 import 'package:wq_fotune/componets/custom_btn.dart';
 import 'package:wq_fotune/global.dart';
-import 'package:wq_fotune/model/user.dart';
 import 'package:wq_fotune/model/user_info.dart';
-import 'package:wq_fotune/utils/MD5Utils.dart';
+import 'package:wq_fotune/utils/md5.dart';
 import 'package:wq_fotune/utils/toast-utils.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
 import '../../main_page.dart';
 import 'forget_pwd_page.dart';

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/api/Robot.dart';
+import 'package:wq_fotune/api/robot.dart';
 import 'package:wq_fotune/common/CustomAppBar.dart';
 import 'package:wq_fotune/componets/circular_load.dart';
 import 'package:wq_fotune/componets/refresh.dart';
@@ -13,8 +13,8 @@ import 'package:wq_fotune/page/mine/view/flat_modal_view.dart';
 import 'package:wq_fotune/page/trade/transaction_details.dart';
 import 'package:wq_fotune/page/trade/view/market_item.dart';
 import 'package:wq_fotune/res/styles.dart';
-import 'package:wq_fotune/utils/StringSharedPreferences.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/store.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 import 'package:wq_fotune/utils/toast-utils.dart';
 
 import '../../global.dart';
@@ -74,7 +74,6 @@ class TransactionPageState extends State<TransactionPage> {
   //数据处理
   handleData() {
     timer = new Timer(durationTime, () {
-      print('数据处理');
       var listD = [];
       final marketData = Global.marketData;
       if (list.length == 0 || list == null) {

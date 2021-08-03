@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wq_fotune/common/EventBus.dart';
 import 'package:wq_fotune/model/account.dart';
 import 'package:wq_fotune/res/styles.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
 class AccountItems extends StatefulWidget {
   final Function changeTap;
@@ -62,7 +62,7 @@ class _AccountItemsState extends State<AccountItems> {
                     ],
                   ),
                 ),
-               Text(
+                Text(
                   widget.data.price,
                   textAlign: TextAlign.left,
                   overflow: TextOverflow.ellipsis,

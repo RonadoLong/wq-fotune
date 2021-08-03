@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 import 'package:wq_fotune/page/home/view/strategy_remark_widget.dart';
 import 'package:wq_fotune/page/home/view/strategy_symbol_widget.dart';
-
 
 class ContentBottom extends StatelessWidget {
   const ContentBottom({
@@ -160,9 +159,7 @@ class ContentCenter extends StatelessWidget {
                 ),
                 new Container(
                   margin: EdgeInsets.only(top: 20.0),
-                  child: symbolList(
-                      symbol:symbol
-                  ),
+                  child: symbolList(symbol: symbol),
                 ),
               ],
             ),
@@ -193,8 +190,7 @@ class ContentTop extends StatelessWidget {
             padding: EdgeInsets.only(bottom: 10.0),
             decoration: new BoxDecoration(
                 border: Border(
-                    bottom: BorderSide(
-                        color: UIData.border_color, width: 1))),
+                    bottom: BorderSide(color: UIData.border_color, width: 1))),
             child: new Row(
               children: <Widget>[
                 new Text(
@@ -226,7 +222,7 @@ class ContentTop extends StatelessWidget {
                   ],
                 ),
                 remarkList(
-                  remark:remark,
+                  remark: remark,
                 )
               ],
             ),

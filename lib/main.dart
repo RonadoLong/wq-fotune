@@ -11,7 +11,7 @@ import 'package:wq_fotune/page/login/login_page.dart';
 import 'package:wq_fotune/page/login/register_page.dart';
 import 'package:wq_fotune/page/mine/exchange_manager.dart';
 import 'package:wq_fotune/page/mine/recharge_page.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 import 'package:wq_fotune/utils/device_utils.dart';
 
 void main() {

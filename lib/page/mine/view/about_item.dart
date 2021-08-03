@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
 class About extends StatelessWidget {
   final Widget icon;
@@ -35,23 +35,26 @@ class About extends StatelessWidget {
           children: <Widget>[
             icon != null
                 ? Padding(
-              padding: const EdgeInsets.only(right: 10.0),
-              child: icon,
-            )
+                    padding: const EdgeInsets.only(right: 10.0),
+                    child: icon,
+                  )
                 : Container(),
             Expanded(
               child: Text(
                 title,
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16.0, color: UIData.default_color),
+                style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16.0,
+                    color: UIData.default_color),
               ),
             ),
             Text(endText),
             onTap == null
                 ? Container()
                 : Icon(
-              Icons.navigate_next,
-              color: theme.disabledColor,
-            )
+                    Icons.navigate_next,
+                    color: theme.disabledColor,
+                  )
           ],
         ),
       ),

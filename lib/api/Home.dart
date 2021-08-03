@@ -1,6 +1,6 @@
 import 'package:wq_fotune/model/base_resp.dart';
 
-import 'HttpUtils.dart';
+import 'http_utils.dart';
 
 Future<BaseResp> commonCarousels() async {
   var url = "common/carousels";
@@ -10,7 +10,7 @@ Future<BaseResp> commonCarousels() async {
 }
 
 //策略列表
-Future<BaseResp> getStrategies(pageNum,pageSize) async {
+Future<BaseResp> getStrategies(pageNum, pageSize) async {
   var url = "exchange-order/strategies/$pageNum/$pageSize";
   var response = await Http().get(url);
   var res = BaseResp.fromJson(response);
@@ -27,7 +27,7 @@ Future<BaseResp> getStrategyDetail(id) async {
 
 Future<BaseResp> createStrategy(params) async {
   var url = "exchange-order/user/strategy/create";
-  var response = await Http().post(url,data:params);
+  var response = await Http().post(url, data: params);
   var res = BaseResp.fromJson(response);
   return res;
 }
@@ -54,8 +54,3 @@ Future<BaseResp> getExchangeSymbolRank() async {
   var res = BaseResp.fromJson(response);
   return res;
 }
-
-
-
-
-

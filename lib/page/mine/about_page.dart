@@ -1,34 +1,31 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/api/Mine.dart';
+import 'package:wq_fotune/api/mine.dart';
 import 'package:wq_fotune/common/CustomAppBar.dart';
-import 'package:wq_fotune/common/ImageWidget.dart';
-import 'package:wq_fotune/componets/cell.dart';
 import 'package:wq_fotune/componets/circular_load.dart';
 import 'package:wq_fotune/page/mine/secret_page.dart';
 import 'package:wq_fotune/page/mine/view/about_item.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 import 'package:wq_fotune/utils/device_utils.dart';
 
-class AboutdPage extends StatefulWidget{
+class AboutdPage extends StatefulWidget {
   @override
-  AboutPageState createState() =>AboutPageState();
+  AboutPageState createState() => AboutPageState();
 }
 
-class AboutPageState extends State<AboutdPage>{
+class AboutPageState extends State<AboutdPage> {
   List<String> cellTitle = ["用户协议", "检查更新"];
   Map data;
   @override
-  void initState(){
+  void initState() {
     super.initState();
     loadData();
-
   }
 
-  loadData() async{
+  loadData() async {
     var params = Device.isAndroid ? 1 : 2;
-    MineAPI.getAppVersion(params).then((res){
-      if(res.code == 0){
+    MineAPI.getAppVersion(params).then((res) {
+      if (res.code == 0) {
         setState(() {
           data = res.data;
         });
@@ -44,8 +41,8 @@ class AboutPageState extends State<AboutdPage>{
     );
   }
 
-  buildBody(){
-    if(data == null){
+  buildBody() {
+    if (data == null) {
       return Center(child: CircularLoading());
     }
     return Container(
@@ -58,24 +55,30 @@ class AboutPageState extends State<AboutdPage>{
     );
   }
 
-  HeaderContainer(){
+  HeaderContainer() {
     return Center(
-       child: new Column(
-         children: <Widget>[
-           new Container(
-             margin: EdgeInsets.fromLTRB(0, 90.0, 0, 0),
-             child: new Text("iFortune",style: TextStyle(
-               color: UIData.grey_color,
-               fontSize: 16.0,
-               fontWeight: FontWeight.w700,
-             ),),
-           ),
+      child: new Column(
+        children: <Widget>[
+          new Container(
+            margin: EdgeInsets.fromLTRB(0, 90.0, 0, 0),
+            child: new Text(
+              "iFortune",
+              style: TextStyle(
+                color: UIData.grey_color,
+                fontSize: 16.0,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
           new Container(
             margin: EdgeInsets.fromLTRB(0, 10.0, 0, 30.0),
-            child:  new Text("版本" + data['versionName'],style: TextStyle(
-              color: Colors.blueGrey.shade500,
-              fontSize: 13.0,
-            ),),
+            child: new Text(
+              "版本" + data['versionName'],
+              style: TextStyle(
+                color: Colors.blueGrey.shade500,
+                fontSize: 13.0,
+              ),
+            ),
           ),
 //           ImageWidget(
 //             url:data['download_code'],
@@ -92,27 +95,28 @@ class AboutPageState extends State<AboutdPage>{
 //               fontSize: 13.0,
 //             ),),
 //           )
-         ],
-       ),
+        ],
+      ),
     );
   }
-  NavCcontainer(){
+
+  NavCcontainer() {
     List<Widget> cells = [];
     for (int i = 0; i < cellTitle.length; i++) {
       String title = cellTitle[i];
       cells.add(About(
         title: title,
         onTap: () {
-          switch (i){
+          switch (i) {
             case 0:
               Navigator.push(
                   context,
                   new MaterialPageRoute(
-                  builder: (context) => new SecretPage()));
+                      builder: (context) => new SecretPage()));
               break;
             default:
               loadData();
-              //更新的逻辑
+            //更新的逻辑
           }
         },
       ));
@@ -122,6 +126,5 @@ class AboutPageState extends State<AboutdPage>{
         children: cells,
       ),
     );
-
   }
 }

@@ -4,13 +4,12 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:wq_fotune/utils/device_utils.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'UIData.dart';
+import 'ui_data.dart';
 import 'check_update.dart';
 
 class UpdateManager {
-
   ///APP更新方法
-  static openURL(context,data) async {
+  static openURL(context, data) async {
     showIOSDialog(context, data, data["apkUrl"]);
   }
 }
@@ -44,7 +43,8 @@ void showIOSDialog(context, Map jsonData, url) {
                     width: w,
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.vertical(bottom: Radius.circular(10)),
+                      borderRadius:
+                          BorderRadius.vertical(bottom: Radius.circular(10)),
                     ),
                     padding: EdgeInsets.fromLTRB(20, 12, 20, 20),
                     child: Column(
@@ -59,7 +59,11 @@ void showIOSDialog(context, Map jsonData, url) {
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                        Text(updateLog, style: TextStyle(fontSize: 14, color: UIData.default_color),),
+                        Text(
+                          updateLog,
+                          style: TextStyle(
+                              fontSize: 14, color: UIData.default_color),
+                        ),
                         Padding(
                           padding: EdgeInsets.only(top: 10),
                         ),

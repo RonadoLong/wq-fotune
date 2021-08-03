@@ -1,10 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/api/Mine.dart';
-import 'package:wq_fotune/api/Robot.dart';
+import 'package:wq_fotune/api/mine.dart';
+import 'package:wq_fotune/api/robot.dart';
 import 'package:wq_fotune/common/CustomAppBar.dart';
-import 'package:wq_fotune/common/NavigatorUtils.dart';
 import 'package:wq_fotune/componets/circular_load.dart';
 import 'package:wq_fotune/componets/refresh.dart';
 import 'package:wq_fotune/model/ticker.dart';
@@ -17,8 +16,8 @@ import 'package:wq_fotune/page/trade/view/add_api.dart';
 import 'package:wq_fotune/page/trade/view/market_account.dart';
 import 'package:wq_fotune/page/trade/view/market_symbol.dart';
 import 'package:wq_fotune/res/styles.dart';
-import 'package:wq_fotune/utils/StringSharedPreferences.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/store.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 import 'package:wq_fotune/utils/toast-utils.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 
@@ -46,7 +45,7 @@ class policyAddState extends State<policyAdd> {
   var minMoneysData;
   var infiniteAiData; //无线网格AI策略
 
-  List exchangeApiList;
+  List exchangeApiList = [];
   Ticker ticker;
   Map currentSymbol = {}; // 当前品种
 
@@ -63,13 +62,13 @@ class policyAddState extends State<policyAdd> {
     if (widget.exchangeApiList != null) {
       exchangeApiList = widget.exchangeApiList;
       Map selectAccount = exchangeApiList[0];
-      print('res${selectAccount}');
+      print('当前选择的账户: $selectAccount');
       save("exchange_name", selectAccount);
       marketAccountData = selectAccount;
     }
 
-    var exchange_name = marketAccountData['exchange_name'].toString().toLowerCase();
-    print("${exchange_name}, ${marketData}");
+    var exchange_name =
+        marketAccountData['exchange_name'].toString().toLowerCase();
     dataMap = marketData[exchange_name]['usdt']['ETH-USDT'];
     // dataMap = marketData[0];
     get('symbolObject').then((val) {
@@ -228,13 +227,15 @@ class policyAddState extends State<policyAdd> {
               selectAccount: marketAccountData,
               callBackSelectAccount: (data) => selectAccount(data),
             ),
-            MarketSymbol(
-              apiList: exchangeApiList,
-              userInfo: userInfo,
-              currentSymbol: currentSymbol,
-              ticker: ticker,
-              onDataChange: () => changeSymbolHandler(),
-            ),
+            currentSymbol.isNotEmpty
+                ? MarketSymbol(
+                    apiList: exchangeApiList,
+                    userInfo: userInfo,
+                    currentSymbol: currentSymbol,
+                    ticker: ticker,
+                    onDataChange: () => changeSymbolHandler(),
+                  )
+                : Container(),
             marketAddWidget()
           ],
         ),
@@ -248,7 +249,7 @@ class policyAddState extends State<policyAdd> {
 
   void getCreat() async {
     var p = {
-      "exchange": currentSymbolParams['exchange_name'],
+      "exchange": currentSymbolParams['exchange_name'].toString().toLowerCase(),
       "symbol": currentSymbolParams['symbol'].replaceAll('-', '').toLowerCase(),
     };
     this.getMinMoneyData(p);
@@ -313,22 +314,19 @@ class policyAddState extends State<policyAdd> {
 
   //根据最低价和利润率生成网格参数(无限网格使用)
   void _getAutoGridParams(isAI, type) async {
-    var params = {};
+    Map<String, dynamic> params = {
+      "exchange": currentSymbolParams['exchange_name'].toString().toLowerCase(),
+      "symbol": currentSymbolParams['symbol'].replaceAll('-', '').toLowerCase(),
+    };
     //AI
     if (isAI) {
-      params = {
-        "exchange": currentSymbolParams['exchange_name'],
-        "symbol":
-            currentSymbolParams['symbol'].replaceAll('-', '').toLowerCase(),
-        "isAI": isAI.toString()
-      };
+      params["isAI"] = isAI.toString();
     }
-    getAutoGridParams(isAI, params).then((res) {
+    getAutoGridParams(params).then((res) {
       if (res.code == 200) {
         setState(() {
           infiniteAiData = res.data;
         });
-        print('infiniteAiData${infiniteAiData}');
       }
     });
   }

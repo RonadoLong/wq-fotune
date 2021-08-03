@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
 import 'CommonDrawer.dart';
 import 'CustomFloat.dart';
-
 
 class CommonScaffold extends StatelessWidget {
   final appTitle;

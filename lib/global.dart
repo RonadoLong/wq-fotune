@@ -8,11 +8,11 @@ import 'package:package_info/package_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wq_fotune/model/user_info.dart';
 
-import 'api/Home.dart';
-import 'api/Mine.dart';
+import 'api/home.dart';
+import 'api/mine.dart';
 import 'common/EventBus.dart';
 import 'common/load_recommned.dart';
-import 'utils/UIData.dart';
+import 'utils/ui_data.dart';
 import 'utils/device_utils.dart';
 import 'utils/update_manager.dart';
 
@@ -183,9 +183,7 @@ class Global {
     //获取行情
     getTick();
     const timeout = const Duration(seconds: 50);
-    Future.delayed(timeout, ()=> {
-        getTick()
-    });
+    Future.delayed(timeout, () => {getTick()});
   }
 
   static getTick() async {

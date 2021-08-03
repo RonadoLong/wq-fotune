@@ -1,48 +1,44 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wq_fotune/res/styles.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
 class MarketGridWidget extends StatefulWidget {
   final data;
 
-  const MarketGridWidget({Key key,this.data}) : super(key: key);
+  const MarketGridWidget({Key key, this.data}) : super(key: key);
   @override
   _MarketGridWidgetState createState() => _MarketGridWidgetState();
 }
 
-class _MarketGridWidgetState extends State<MarketGridWidget>{
-
+class _MarketGridWidgetState extends State<MarketGridWidget> {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return gridWidget();
   }
 
-  Widget quotationWidget(){
+  Widget quotationWidget() {
     List<Widget> tilesData = [];
     Widget contentData;
-    widget.data['labels'].forEach((item){
-      tilesData.add(
-          new Container(
-            padding: EdgeInsets.fromLTRB(6, 4, 6, 4),
-            margin: EdgeInsets.all(2.0),
-            decoration: new BoxDecoration(
-                borderRadius:
-                BorderRadius.all(Radius.circular(4.0)),
+    widget.data['labels'].forEach((item) {
+      tilesData.add(new Container(
+        padding: EdgeInsets.fromLTRB(6, 4, 6, 4),
+        margin: EdgeInsets.all(2.0),
+        decoration: new BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(4.0)),
+            color: UIData.border_color,
+            boxShadow: [
+              BoxShadow(
                 color: UIData.border_color,
-                boxShadow: [
-                  BoxShadow(
-                    color: UIData.border_color,
-                    blurRadius: 20.0,
-                    offset: Offset(1.0, 1.0),
-                  )
-                ]),
-            child: new Text(
-              item,
-              style: TextStyles.RegularGrey2TextSize12,
-            ),
-          )
-      );
+                blurRadius: 20.0,
+                offset: Offset(1.0, 1.0),
+              )
+            ]),
+        child: new Text(
+          item,
+          style: TextStyles.RegularGrey2TextSize12,
+        ),
+      ));
     });
     contentData = new Row(
       children: tilesData,
@@ -69,7 +65,11 @@ class _MarketGridWidgetState extends State<MarketGridWidget>{
           new Container(
             child: new Column(
               children: <Widget>[
-                new Icon(Icons.grid_off, color: Colors.deepOrange, size: 18,),
+                new Icon(
+                  Icons.grid_off,
+                  color: Colors.deepOrange,
+                  size: 18,
+                ),
                 new Text(" "),
                 new Text(" "),
                 new Text(" "),
@@ -85,7 +85,7 @@ class _MarketGridWidgetState extends State<MarketGridWidget>{
                   children: <Widget>[
                     new Text(
                       widget.data['name'],
-                      style:TextStyles.MediumBlackTextSize16,
+                      style: TextStyles.MediumBlackTextSize16,
                     )
                   ],
                 ),
@@ -124,5 +124,4 @@ class _MarketGridWidgetState extends State<MarketGridWidget>{
       ),
     );
   }
-
 }

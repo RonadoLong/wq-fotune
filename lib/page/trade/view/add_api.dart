@@ -1,17 +1,15 @@
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/api/Mine.dart';
-import 'package:wq_fotune/api/User.dart';
+import 'package:wq_fotune/api/mine.dart';
 import 'package:wq_fotune/common/CustomAppBar.dart';
 import 'package:wq_fotune/componets/circular_load.dart';
 import 'package:wq_fotune/componets/custom_btn.dart';
 import 'package:wq_fotune/componets/fInput_widget.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 import 'package:wq_fotune/utils/toast-utils.dart';
 
 import '../../../global.dart';
+
 class AddApiPage extends StatefulWidget {
   int id;
   AddApiPage({this.id});
@@ -20,7 +18,7 @@ class AddApiPage extends StatefulWidget {
   AddApiPageState createState() => AddApiPageState();
 }
 
-class  AddApiPageState extends State<AddApiPage> {
+class AddApiPageState extends State<AddApiPage> {
   var _ApiKeyController = new TextEditingController();
   var _SecretCodeController = new TextEditingController();
   var _passphraseCodeController = new TextEditingController();
@@ -34,7 +32,6 @@ class  AddApiPageState extends State<AddApiPage> {
   void initState() {
     super.initState();
     _getExchangeInfo();
-
   }
 
   // 获取交易所列表
@@ -75,7 +72,6 @@ class  AddApiPageState extends State<AddApiPage> {
     });
   }
 
-
   // 更新交易所
   void _exchangeOrderExchangeApiUpdate(params, callBack) {
     MineAPI.updateExchangeOrderExchangeApi(params).then((res) {
@@ -90,95 +86,92 @@ class  AddApiPageState extends State<AddApiPage> {
     });
   }
 
-
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildBar(widget.id == null ? "添加API" : "修改API"),
-      body: SafeArea(
-        child:buildBody()
-      ),
+      body: SafeArea(child: buildBody()),
     );
   }
 
-
   buildBody() {
-    if(dItems == null){
+    if (dItems == null) {
       return Center(child: CircularLoading());
     }
     return Stack(
       children: [
         SingleChildScrollView(
-          child: new Padding(padding: new EdgeInsets.only(
-              left: 30.0, top: 10.0, right: 30.0, bottom: 0.0),child: new Column(
-            children: [
-              new Container(
-                child:  new Column(
-                  children: <Widget>[
-                    new Padding(padding: new EdgeInsets.all(8.0)),
-                    headerSelect(context),
-                    new Padding(padding: new EdgeInsets.all(8.0)),
-                    new FInputWidget(
-                      hintText: "输入apiKey",
-                      onChanged: (String value) {
-                        print(value);
-                      },
-                      controller: _ApiKeyController,
-                    ),
-                    new Padding(padding: new EdgeInsets.all(8.0)),
-                    new FInputWidget(
-                      hintText: "输入Secret",
-                      onChanged: (String value) {
-                        print(value);
-                      },
-                      controller: _SecretCodeController,
-                    ),
-                    new Padding(padding: new EdgeInsets.all(8.0)),
-                    _showPass(),
-                  ],
+          child: new Padding(
+            padding: new EdgeInsets.only(
+                left: 30.0, top: 10.0, right: 30.0, bottom: 0.0),
+            child: new Column(
+              children: [
+                new Container(
+                  child: new Column(
+                    children: <Widget>[
+                      new Padding(padding: new EdgeInsets.all(8.0)),
+                      headerSelect(context),
+                      new Padding(padding: new EdgeInsets.all(8.0)),
+                      new FInputWidget(
+                        hintText: "输入apiKey",
+                        onChanged: (String value) {
+                          print(value);
+                        },
+                        controller: _ApiKeyController,
+                      ),
+                      new Padding(padding: new EdgeInsets.all(8.0)),
+                      new FInputWidget(
+                        hintText: "输入Secret",
+                        onChanged: (String value) {
+                          print(value);
+                        },
+                        controller: _SecretCodeController,
+                      ),
+                      new Padding(padding: new EdgeInsets.all(8.0)),
+                      _showPass(),
+                    ],
+                  ),
                 ),
-              ),
-              new Padding(padding: new EdgeInsets.all(30.0)),
-              RoundBtn(
-                content: "导入",
-                isPositioned: false,
-                onPress: () {
-                  var exchangeId = _value;
-                  var apiKey = _ApiKeyController.text.trim();
-                  var secret = _SecretCodeController.text.trim();
-                  var passphrase =
-                  _passphraseCodeController.text.trim();
-                  var params = {
-                    "exchange_id": exchangeId,
-                    "api_key": apiKey,
-                    "secret": secret,
-                    "passphrase": passphrase,
-                  };
+                new Padding(padding: new EdgeInsets.all(30.0)),
+                RoundBtn(
+                  content: "导入",
+                  isPositioned: false,
+                  onPress: () {
+                    var exchangeId = _value;
+                    var apiKey = _ApiKeyController.text.trim();
+                    var secret = _SecretCodeController.text.trim();
+                    var passphrase = _passphraseCodeController.text.trim();
+                    var params = {
+                      "exchange_id": exchangeId,
+                      "api_key": apiKey,
+                      "secret": secret,
+                      "passphrase": passphrase,
+                    };
 
-                  if (widget.id != null) {
-                    // 修改状态
-                    params["api_id"] = widget.id;
-                    if (apiKey.length == 0 &&
-                        secret.length == 0 &&
-                        passphrase.length == 0) {
-                      showToast("请填写完整的信息");
-                      return;
+                    if (widget.id != null) {
+                      // 修改状态
+                      params["api_id"] = widget.id;
+                      if (apiKey.length == 0 &&
+                          secret.length == 0 &&
+                          passphrase.length == 0) {
+                        showToast("请填写完整的信息");
+                        return;
+                      }
+                    } else {
+                      if (apiKey.length == 0 || secret.length == 0) {
+                        showToast("请填写完整的信息");
+                        return;
+                      }
                     }
-                  } else {
-                    if (apiKey.length == 0 || secret.length == 0) {
-                      showToast("请填写完整的信息");
-                      return;
-                    }
-                  }
-                  onTapSure(params, () {
-                    _ApiKeyController.clear();
-                    _SecretCodeController.clear();
-                    _passphraseCodeController.clear();
-                  });
-                },
-              )
-            ],
-          ),),
+                    onTapSure(params, () {
+                      _ApiKeyController.clear();
+                      _SecretCodeController.clear();
+                      _passphraseCodeController.clear();
+                    });
+                  },
+                )
+              ],
+            ),
+          ),
         )
       ],
     );
@@ -197,7 +190,7 @@ class  AddApiPageState extends State<AddApiPage> {
     return Container();
   }
 
-  Widget headerSelect(ctx){
+  Widget headerSelect(ctx) {
     double w = MediaQuery.of(ctx).size.width;
     double inputW = w - 130;
     List<DropdownMenuItem> _items = [];
@@ -212,9 +205,7 @@ class  AddApiPageState extends State<AddApiPage> {
                 Text(
                   // val["exchange"],
                   val['name'],
-                  style: TextStyle(
-                      fontSize: 16.0,
-                      color: UIData.grey_color),
+                  style: TextStyle(fontSize: 16.0, color: UIData.grey_color),
                 ),
               ],
             ),
@@ -244,7 +235,7 @@ class  AddApiPageState extends State<AddApiPage> {
       padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
       decoration: new BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(8.0)),
-        color:  Color.fromRGBO(245, 245, 245, 1),
+        color: Color.fromRGBO(245, 245, 245, 1),
       ),
       child: new Column(
         children: <Widget>[
@@ -270,9 +261,4 @@ class  AddApiPageState extends State<AddApiPage> {
       ),
     );
   }
-
 }
-
-
-
-

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wq_fotune/res/styles.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
 class SyCell extends StatelessWidget {
   final Widget icon;
@@ -28,7 +28,10 @@ class SyCell extends StatelessWidget {
             EdgeInsets.only(left: 15.0, top: 10.0, right: 10.0, bottom: 10.0),
         decoration: BoxDecoration(
             color: Colors.white,
-            border: Border(bottom: BorderSide(color: isShowLine ? theme.dividerColor : Colors.white, width: 0.5))),
+            border: Border(
+                bottom: BorderSide(
+                    color: isShowLine ? theme.dividerColor : Colors.white,
+                    width: 0.5))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[

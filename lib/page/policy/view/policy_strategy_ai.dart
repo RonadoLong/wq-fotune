@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
-import 'package:wq_fotune/api/Robot.dart';
+import 'package:wq_fotune/api/robot.dart';
 import 'package:wq_fotune/componets/custom_btn.dart';
 import 'package:wq_fotune/componets/fInput_widget.dart';
 import 'package:wq_fotune/res/styles.dart';
@@ -218,7 +218,8 @@ class policyAiState extends State<policyAi> {
                               showToast('策略可用资金不足');
                               return;
                             }
-                            var min = widget.infiniteAiData['minTotalSum'].toString();
+                            var min =
+                                widget.infiniteAiData['minTotalSum'].toString();
                             if (double.parse(value) < double.parse(min)) {
                               showToast("投资额不能小于${min}${currency}");
                               return;
@@ -228,7 +229,8 @@ class policyAiState extends State<policyAi> {
                         controller: _totalSumController,
                       ),
                       new Padding(padding: new EdgeInsets.all(4.0)),
-                      new Text("开启此网格单的最小投资额为${widget.infiniteAiData['minTotalSum']}${currency}",
+                      new Text(
+                          "开启此网格单的最小投资额为${widget.infiniteAiData['minTotalSum']}${currency}",
                           style: TextStyles.RegularRedTextSize14),
                       new Padding(padding: new EdgeInsets.all(4.0)),
                       new Text("可用余额${availableBalance}${currency}",

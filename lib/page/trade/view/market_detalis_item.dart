@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
+
 class MarketDetalisItem extends StatelessWidget {
   final Map data;
   final Function press;
@@ -69,9 +70,7 @@ class MarketDetalisItem extends StatelessWidget {
               ),
             ],
           )),
-      onTap: () {
-
-      },
+      onTap: () {},
     );
   }
 }

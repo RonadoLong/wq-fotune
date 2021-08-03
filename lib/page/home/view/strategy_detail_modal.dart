@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:wq_fotune/componets/fInput_widget.dart';
 import 'package:wq_fotune/componets/custom_btn.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
 var _balanceController = new TextEditingController();
 

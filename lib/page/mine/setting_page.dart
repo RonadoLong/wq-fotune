@@ -1,8 +1,6 @@
 import 'dart:async';
 
-import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/api/User.dart';
 import 'package:wq_fotune/common/CustomAppBar.dart';
 import 'package:wq_fotune/common/EventBus.dart';
 import 'package:wq_fotune/componets/custom_btn.dart';
@@ -11,7 +9,7 @@ import 'package:wq_fotune/model/user_info.dart';
 import 'package:wq_fotune/page/mine/view/del_modal_view.dart';
 import 'package:wq_fotune/res/styles.dart';
 import 'package:wq_fotune/utils/toast-utils.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 import 'package:wq_fotune/page/mine/edit_name.dart';
 import 'package:wq_fotune/page/mine/edit_pwd.dart';
 
@@ -74,7 +72,9 @@ class SettingPageState extends State<SettingPage> {
                             userInfo.name,
                             style: TextStyles.MediumBlackTextSize14,
                           ),
-                          Padding(padding: EdgeInsets.only(left:8.0),),
+                          Padding(
+                            padding: EdgeInsets.only(left: 8.0),
+                          ),
                           Icon(
                             Icons.arrow_forward_ios,
                             size: 12,

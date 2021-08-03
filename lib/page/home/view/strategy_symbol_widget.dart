@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
-class symbolList extends StatelessWidget{
+class symbolList extends StatelessWidget {
   List symbol;
   symbolList({Key key, this.symbol}) : super(key: key);
 

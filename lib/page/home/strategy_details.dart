@@ -1,8 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:wq_fotune/api/User.dart';
 import 'package:wq_fotune/common/CustomAppBar.dart';
 import 'package:wq_fotune/common/EventBus.dart';
 import 'package:wq_fotune/common/NavigatorUtils.dart';
@@ -16,9 +14,7 @@ import 'package:wq_fotune/page/home/view/strategy_details_body.dart';
 import 'package:wq_fotune/page/mine/view/del_modal_view.dart';
 import 'package:wq_fotune/utils/toast-utils.dart';
 import 'package:http/http.dart' as http;
-import 'package:wq_fotune/api/Home.dart';
-import 'package:wq_fotune/page/home/view/strategy_remark_widget.dart';
-import 'package:wq_fotune/page/home/view/strategy_symbol_widget.dart';
+import 'package:wq_fotune/api/home.dart';
 
 class StrategyDetails extends StatefulWidget {
   final int id;

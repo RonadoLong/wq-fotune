@@ -3,9 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wq_fotune/res/styles.dart';
-import 'package:wq_fotune/utils/UIData.dart';
-
-import '../policy_detail.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
 class PolicyItem extends StatefulWidget {
   final data;
@@ -70,7 +68,9 @@ class PolicyItemState extends State<PolicyItem> {
                           style: TextStyles.MediumWhiteTextSize13,
                         ),
                       ),
-                      SizedBox(height: 7,),
+                      SizedBox(
+                        height: 7,
+                      ),
                       Text(
                         'AI预测年化',
                         style: TextStyles.RegularGrey2TextSize13,
@@ -88,7 +88,9 @@ class PolicyItemState extends State<PolicyItem> {
                             item['name'],
                             style: TextStyles.MediumBlackTextSize16,
                           ),
-                          SizedBox(height: 4,),
+                          SizedBox(
+                            height: 4,
+                          ),
                           quotationWidget()
                         ],
                       )),

@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
 /// 带图标的输入框
 class WalletFInputWidget extends StatefulWidget {
@@ -24,19 +24,17 @@ class WalletFInputWidget extends StatefulWidget {
 
   final bool enabled;
 
-
-
   WalletFInputWidget(
       {Key key,
-        this.hintText,
-        this.iconData,
-        this.onChanged,
-        this.textStyle,
-        this.controller,
-        this.focusNode,
-        this.enabled,
-        this.obscureText = false,
-        this.isNumber = false})
+      this.hintText,
+      this.iconData,
+      this.onChanged,
+      this.textStyle,
+      this.controller,
+      this.focusNode,
+      this.enabled,
+      this.obscureText = false,
+      this.isNumber = false})
       : super(key: key);
 
   @override
@@ -55,7 +53,7 @@ class _FInputWidgetState extends State<WalletFInputWidget> {
       obscureText: widget.obscureText,
       enabled: widget.enabled,
       cursorColor: UIData.normal_line_color,
-      focusNode:widget.focusNode,
+      focusNode: widget.focusNode,
       keyboardType: widget.isNumber ? TextInputType.number : TextInputType.text,
       decoration: InputDecoration(
         hintText: widget.hintText,
@@ -65,7 +63,7 @@ class _FInputWidgetState extends State<WalletFInputWidget> {
         ),
         contentPadding: const EdgeInsets.only(left: 10.0),
         filled: true,
-        fillColor: widget.enabled == false ?  Colors.white : Colors.white,
+        fillColor: widget.enabled == false ? Colors.white : Colors.white,
         icon: widget.iconData == null ? null : new Icon(widget.iconData),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
@@ -76,13 +74,10 @@ class _FInputWidgetState extends State<WalletFInputWidget> {
         ),
         focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: Colors.white, //边框颜色
-              width: 2, //边线宽度
-            )
-        ),
+          color: Colors.white, //边框颜色
+          width: 2, //边线宽度
+        )),
       ),
     );
   }
 }
-
-

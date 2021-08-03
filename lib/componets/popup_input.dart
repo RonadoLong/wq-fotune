@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
 /// 带图标的输入框
 class PopupInputWidget extends StatefulWidget {
@@ -21,13 +21,13 @@ class PopupInputWidget extends StatefulWidget {
 
   PopupInputWidget(
       {Key key,
-        this.hintText,
-        this.iconData,
-        this.onChanged,
-        this.textStyle,
-        this.controller,
-        this.obscureText = false,
-        this.isNumber = false})
+      this.hintText,
+      this.iconData,
+      this.onChanged,
+      this.textStyle,
+      this.controller,
+      this.obscureText = false,
+      this.isNumber = false})
       : super(key: key);
 
   @override
@@ -58,19 +58,16 @@ class _FInputWidgetState extends State<PopupInputWidget> {
         icon: widget.iconData == null ? null : new Icon(widget.iconData),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: Color.fromRGBO(245,245,245,1), //边框颜色
+            color: Color.fromRGBO(245, 245, 245, 1), //边框颜色
             width: 2, //边线宽度
           ),
         ),
         focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: UIData.blue_color, //边框颜色
-              width: 2, //边线宽度
-            )
-        ),
+          color: UIData.blue_color, //边框颜色
+          width: 2, //边线宽度
+        )),
       ),
     );
   }
 }
-
-

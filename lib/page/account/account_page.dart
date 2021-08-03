@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:wq_fotune/api/Mine.dart';
-import 'package:wq_fotune/api/User.dart';
+import 'package:wq_fotune/api/mine.dart';
 import 'package:wq_fotune/common/CustomAppBar.dart';
 import 'package:wq_fotune/common/NavigatorUtils.dart';
 import 'package:wq_fotune/componets/refresh.dart';
@@ -13,7 +12,7 @@ import 'package:wq_fotune/page/common/CommonWidget.dart';
 import 'package:wq_fotune/page/trade/view/add_api.dart';
 import 'package:wq_fotune/page/trade/view/manage_api.dart';
 import 'package:wq_fotune/res/styles.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 import 'package:wq_fotune/utils/toast-utils.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 

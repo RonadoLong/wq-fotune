@@ -1,15 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:wq_fotune/api/Robot.dart';
+import 'package:wq_fotune/api/robot.dart';
 import 'package:wq_fotune/common/CustomAppBar.dart';
-import 'package:wq_fotune/componets/area_chart_view.dart';
 import 'package:wq_fotune/componets/circular_load.dart';
 import 'package:wq_fotune/componets/refresh.dart';
 import 'package:wq_fotune/page/trade/market_parameters.dart';
 import 'package:wq_fotune/res/styles.dart';
 
-import '../../utils/UIData.dart';
+import '../../utils/ui_data.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 
 class TransactionDetails extends StatefulWidget {

@@ -10,7 +10,7 @@ import 'package:qr_flutter/qr_flutter.dart';
 import 'package:share_extend/share_extend.dart';
 import 'package:wq_fotune/common/EventBus.dart';
 import 'package:wq_fotune/page/common/CommonWidget.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 import 'package:wq_fotune/utils/screen/int_extension.dart';
 import 'dart:ui' as ui;
 import 'package:http/http.dart' as http;

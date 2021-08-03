@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 
 /// 墨水瓶（`InkWell`）可用时使用的字体样式。
 final TextStyle _availableStyle = TextStyle(
@@ -109,12 +109,11 @@ class _LoginFormCodeState extends State<LoginFormCode> {
           height: 48,
           alignment: Alignment.center,
           decoration: new BoxDecoration(
-            color: UIData.primary_color,
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(4.0),
-              bottomRight: Radius.circular(4.0),
-            )
-          ),
+              color: UIData.primary_color,
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(4.0),
+                bottomRight: Radius.circular(4.0),
+              )),
           child: Text(
             '$_verifyStr',
             style: inkWellStyle,

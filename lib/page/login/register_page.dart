@@ -5,13 +5,13 @@ import 'package:wq_fotune/common/load_recommned.dart';
 import 'package:wq_fotune/componets/custom_btn.dart';
 import 'package:wq_fotune/page/home/view/download_app.dart';
 import 'package:wq_fotune/page/mine/secret_page.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 import 'package:wq_fotune/componets/fInput_widget.dart';
 import 'package:wq_fotune/utils/toast-utils.dart';
 import 'package:wq_fotune/componets/login_form_code.dart';
-import 'package:wq_fotune/api/User.dart';
+import 'package:wq_fotune/api/user.dart';
 import 'package:wq_fotune/page/login/login_page.dart';
-import 'package:wq_fotune/utils/MD5Utils.dart';
+import 'package:wq_fotune/utils/md5.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -245,7 +245,8 @@ class RegisterState extends State<RegisterPage> {
                         Flexible(
                           flex: 1,
                           child: LoginFormCode(
-                            available: _phoneController.text.trim().length >= 11,
+                            available:
+                                _phoneController.text.trim().length >= 11,
                             onTapCallback: () {
                               var phone = _phoneController.text.trim();
                               if (phone.length == 0 || phone.length < 11) {

@@ -9,9 +9,9 @@ import 'package:wq_fotune/page/mine/view/del_modal_view.dart';
 import 'package:wq_fotune/page/mine/view/exchange_item.dart';
 import 'package:wq_fotune/page/mine/view/exchange_modal.dart';
 import 'package:wq_fotune/utils/toast-utils.dart';
-import 'package:wq_fotune/utils/UIData.dart';
+import 'package:wq_fotune/utils/ui_data.dart';
 import 'package:wq_fotune/page/mine/exchange_api_details.dart';
-import 'package:wq_fotune/api/Mine.dart';
+import 'package:wq_fotune/api/mine.dart';
 import 'package:wq_fotune/page/common/CommonWidget.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 

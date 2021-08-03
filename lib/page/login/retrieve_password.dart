@@ -3,22 +3,22 @@ import 'package:wq_fotune/common/CustomAppBar.dart';
 import 'package:wq_fotune/componets/custom_btn.dart';
 import 'package:wq_fotune/componets/fInput_widget.dart';
 import 'package:wq_fotune/utils/toast-utils.dart';
-import 'package:wq_fotune/api/User.dart';
-import 'package:wq_fotune/utils/MD5Utils.dart';
+import 'package:wq_fotune/api/user.dart';
+import 'package:wq_fotune/utils/md5.dart';
 import 'package:wq_fotune/page/login/login_page.dart';
 
 class RetrievePasswordPage extends StatefulWidget {
   final String phone, code;
-  RetrievePasswordPage(this.phone,this.code);
+  RetrievePasswordPage(this.phone, this.code);
   @override
   State<StatefulWidget> createState() {
     return new RetrievePasswordState(phone, code);
   }
 }
 
-class RetrievePasswordState extends State<RetrievePasswordPage>{
+class RetrievePasswordState extends State<RetrievePasswordPage> {
   String phone, code;
-  RetrievePasswordState(this.phone,this.code);
+  RetrievePasswordState(this.phone, this.code);
   var _userPassController = new TextEditingController();
   var _userAgainPassController = new TextEditingController();
 
@@ -41,18 +41,17 @@ class RetrievePasswordState extends State<RetrievePasswordPage>{
       "password": userPassData,
       "confirm_password": userAgainPassData
     };
-    ForgetPassword(params).then((res){
-      if(res.code != 0){
+    ForgetPassword(params).then((res) {
+      if (res.code != 0) {
         showToast(res.msg);
-      }else{
+      } else {
         showToast("设置密码成功");
-        Navigator.push(context, new MaterialPageRoute(
-            builder: (context) =>
-            new LoginPage())
-        );
+        Navigator.push(context,
+            new MaterialPageRoute(builder: (context) => new LoginPage()));
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +60,8 @@ class RetrievePasswordState extends State<RetrievePasswordPage>{
         alignment: Alignment.center,
         children: <Widget>[
           new Padding(
-            padding: new EdgeInsets.only(left: 20.0, top: 30, right: 20.0, bottom: 0.0),
+            padding: new EdgeInsets.only(
+                left: 20.0, top: 30, right: 20.0, bottom: 0.0),
             child: new Column(
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
@@ -86,13 +86,14 @@ class RetrievePasswordState extends State<RetrievePasswordPage>{
               ],
             ),
           ),
-          RoundBtn(content: "确认并前往登录", onPress: (){
-            this._forgetPassword();
-          },)
+          RoundBtn(
+            content: "确认并前往登录",
+            onPress: () {
+              this._forgetPassword();
+            },
+          )
         ],
       ),
     );
   }
-
 }
-
