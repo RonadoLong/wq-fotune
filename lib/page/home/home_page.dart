@@ -151,7 +151,6 @@ class HomePageState extends State<HomePage> {
       sliverList: SliverList(
         delegate: SliverChildListDelegate(
           [
-            _builddownloadAPP(),
             _buildBanner(),
             _buildProperty(),
             HomeTickerHeader(),

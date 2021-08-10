@@ -112,6 +112,9 @@ class TransactionPageState extends State<TransactionPage> {
 
   loadData() async {
     if (userInfo == null) {
+      setState(() {
+        dataList = [];
+      });
       return;
     }
     RobotApi.getStrategyList(userInfo.userId, 0, 100).then((res) {

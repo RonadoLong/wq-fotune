@@ -84,6 +84,9 @@ class MarketPageState extends State<MarketPage> {
 
   loadData() {
     if (userInfo == null) {
+      setState(() {
+        dataList = [];
+      });
       return;
     }
     RobotApi.getStrategyList(userInfo.userId, 0, 100).then((res) {
@@ -220,59 +223,43 @@ class MarketPageState extends State<MarketPage> {
   buildBody() {
     if (dataList == null) {
       return CircularLoading();
-    } else {
-      return CommonRefresh(
-        controller: _controller,
-        sliverList: SliverList(
-          delegate: SliverChildListDelegate(
-            [
-              MarketAccount(callBackSelectAccount: (data) {
-                print('data${data}');
-                setState(() {
-                  dataMap = {
-                    "symbol": dataMap['symbol'],
-                    "exchange": data['exchange_name'],
-                    "api_key": data['api_key'],
-                  };
-                  marketAccountData = data;
-                });
-                getCreat();
-              }),
-              // MarketSymbol(changeTap: (idx, val) {
-              //   if (idx == 1) {
-              //     // 切换tap
-              //     setState(() {
-              //       isVisible = val;
-              //     });
-              //   }
-              // }, onDataChange: (data) {
-              //   // var symbolData = data['symbol'].replaceAll('-', '').toLowerCase();
-              //   setState(() {
-              //     dataMap = {
-              //       "symbol": data['symbol'],
-              //       "exchange": dataMap['exchange'],
-              //       "api_key": dataMap['api_key']
-              //     };
-              //   });
-              //   getCreat();
-              // }),
-              Visibility(
-                child: MarketGridWidgetItem(),
-                visible: isVisible,
-              ),
-              Visibility(
-                child: _buildStrategyItem(),
-                visible: !isVisible,
-              )
-            ],
-          ),
-        ),
-        onRefresh: () {
-          loadData();
-          _getExchangeInfo();
-        },
-      );
     }
+    // if (dataList.length == 0) {
+    //   return BuildLoadMoreView();
+    // }
+    return CommonRefresh(
+      controller: _controller,
+      sliverList: SliverList(
+        delegate: SliverChildListDelegate(
+          [
+            MarketAccount(callBackSelectAccount: (data) {
+              print('data${data}');
+              setState(() {
+                dataMap = {
+                  "symbol": dataMap['symbol'],
+                  "exchange": data['exchange_name'],
+                  "api_key": data['api_key'],
+                };
+                marketAccountData = data;
+              });
+              getCreat();
+            }),
+            Visibility(
+              child: MarketGridWidgetItem(),
+              visible: isVisible,
+            ),
+            Visibility(
+              child: _buildStrategyItem(),
+              visible: !isVisible,
+            )
+          ],
+        ),
+      ),
+      onRefresh: () {
+        loadData();
+        _getExchangeInfo();
+      },
+    );
   }
 
   _buildLoginAndNotHasAPIView() {
