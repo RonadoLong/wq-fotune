@@ -24,7 +24,7 @@ class EditNamerState extends State<EditNamePage> {
     }
     var avatar = "";
     var params = {"name": name, "avatar": avatar};
-    ResetUser(params).then((res) {
+    UserApi.updateUser(params).then((res) {
       if (res.code != 0) {
         showToast(res.msg);
       } else {

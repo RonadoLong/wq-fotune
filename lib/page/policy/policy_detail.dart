@@ -256,7 +256,7 @@ class policyAddState extends State<policyAdd> {
   }
 
   void getMinMoneyData(params) async {
-    getMinMoney(params).then((res) {
+    RobotApi.getMinMoney(params).then((res) {
       print(res);
       if (res.code == 200) {
         var minMoneyData = res.data['minMoney'];
@@ -279,7 +279,7 @@ class policyAddState extends State<policyAdd> {
       "symbol": params['symbol'],
       "totalSum": minMoney.toString()
     };
-    getGridParams(data).then((res) {
+    RobotApi.getGridParams(data).then((res) {
       if (res.code == 200) {
         setState(() {
           minMoneysData = res.data;
@@ -297,7 +297,7 @@ class policyAddState extends State<policyAdd> {
 
   void _postGridStartup(data) {
     showLoading();
-    postGridStartup(data).then((res) {
+    RobotApi.postGridStartup(data).then((res) {
       dismissLoad();
       if (res.code == 200) {
         Global.eventBus.emit("createStrategy", null);
@@ -322,7 +322,7 @@ class policyAddState extends State<policyAdd> {
     if (isAI) {
       params["isAI"] = isAI.toString();
     }
-    getAutoGridParams(params).then((res) {
+    RobotApi.getAutoGridParams(params).then((res) {
       if (res.code == 200) {
         setState(() {
           infiniteAiData = res.data;

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/api/home.dart';
+import 'package:wq_fotune/api/exchange.dart';
 import 'package:wq_fotune/model/user_info.dart';
 import 'package:wq_fotune/common/EventBus.dart';
 import 'package:wq_fotune/page/account/account_page.dart';
@@ -41,7 +41,7 @@ class _HomeHeaderState extends State<HomeHeader> {
   }
 
   loadUserInfo() async {
-    getUserInfo().then((resp) {
+    UserApi.getUserInfo().then((resp) {
       if (resp.code == 0) {
         UserInfo res = UserInfo.fromJson(resp.data);
         setState(() {
@@ -52,7 +52,7 @@ class _HomeHeaderState extends State<HomeHeader> {
   }
 
   _getExchangeAssert() async {
-    getExchangeAssert().then((res) {
+    ExchangeApi.getExchangeAssert().then((res) {
       if (res.code == 0) {
         setState(() {
           data = res.data;

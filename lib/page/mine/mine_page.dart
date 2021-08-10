@@ -57,7 +57,7 @@ class MinePageState extends State<MinePage> {
   }
 
   loadUserInfo() async {
-    getUserInfo().then((resp) {
+    UserApi.getUserInfo().then((resp) {
       if (resp.code == 0) {
         UserInfo res = UserInfo.fromJson(resp.data);
         setState(() {

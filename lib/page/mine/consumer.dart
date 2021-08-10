@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:wq_fotune/api/common.dart';
 import 'package:wq_fotune/common/CustomAppBar.dart';
 import 'package:wq_fotune/componets/custom_btn.dart';
 import 'package:wq_fotune/utils/toast-utils.dart';
@@ -23,10 +24,8 @@ class ConsultState extends State<Consult> {
   }
 
   loadData() {
-    MineAPI.commonContact().then((res) => {
-          if (res.code != 0)
-            {}
-          else
+    CommonApi.commonContact().then((res) => {
+          if (res.code == 0)
             {
               setState(() {
                 print(res.data);

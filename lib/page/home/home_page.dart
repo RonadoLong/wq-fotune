@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:wq_fotune/api/common.dart';
+import 'package:wq_fotune/api/exchange.dart';
 import 'package:wq_fotune/api/mine.dart';
 import 'package:wq_fotune/common/CustomAppBar.dart';
 import 'package:wq_fotune/componets/circular_load.dart';
@@ -11,7 +13,6 @@ import 'package:wq_fotune/page/home/view/home_ticker_header.dart';
 import 'package:wq_fotune/page/home/view/home_ticks_item.dart';
 import 'package:wq_fotune/page/home/view/home_property.dart';
 import 'package:wq_fotune/utils/toast-utils.dart';
-import 'package:wq_fotune/api/home.dart';
 import 'package:wq_fotune/page/common/CommonWidget.dart';
 import 'package:wq_fotune/model/user_info.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
@@ -59,7 +60,7 @@ class HomePageState extends State<HomePage> {
   }
 
   _loadCarousels() async {
-    commonCarousels().then((res) {
+    CommonApi.commonCarousels().then((res) {
       if (res.code == 0) {
         setState(() {
           banners = res.data;
@@ -85,7 +86,7 @@ class HomePageState extends State<HomePage> {
   }
 
   _getExchangeSymbolRank() async {
-    getExchangeSymbolRank().then((res) {
+    ExchangeApi.getExchangeSymbolRank().then((res) {
       if (res.code == 0) {
         setState(() {
           dataList = res.data;
@@ -120,7 +121,7 @@ class HomePageState extends State<HomePage> {
   }
 
   loadMore() async {
-    getStrategies(pageNum + 1, pageSize).then((res) {
+    ExchangeApi.getStrategies(pageNum + 1, pageSize).then((res) {
       if (res.code == 0) {
         if (this.mounted) {
           setState(() {

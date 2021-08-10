@@ -44,7 +44,7 @@ class MarketChoiceTradeState extends State<MarketChoiceTrade> {
   }
 
   void getData(val) async {
-    getSymbols(val).then((res) {
+    RobotApi.getSymbols(val).then((res) {
       print("getSymbols ----> $res");
       if (res.code == 0) {
         var data = res.data.keys.toList();

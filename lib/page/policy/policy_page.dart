@@ -33,7 +33,7 @@ class PolicyPageState extends State<PolicyPage> {
   }
 
   getStrategyTypesData() {
-    getStrategyTypes(0, 100).then((res) {
+    RobotApi.getStrategyTypes(0, 100).then((res) {
       if (res.code == 200) {
         setState(() {
           dataList = res.data['gridTypes'];

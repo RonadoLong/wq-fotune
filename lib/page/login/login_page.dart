@@ -45,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
       "phone": phone,
       "password": pwd,
     };
-    Login(params).then((res) {
+    UserApi.login(params).then((res) {
       if (res.code != 0) {
         showToast(res.msg);
         return;

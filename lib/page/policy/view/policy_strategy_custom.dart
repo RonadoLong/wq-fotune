@@ -144,7 +144,7 @@ class PolicyCustomState extends State<PolicyCustom> {
         "minPrice": _minPriceController.text.trim(),
         "profitRate": _gridNumController.text.trim() + '%',
       };
-      getAutoGridParams(params).then((res) {
+      RobotApi.getAutoGridParams(params).then((res) {
         if (res.code == 200) {
           setState(() {
             dataManua = res.data;

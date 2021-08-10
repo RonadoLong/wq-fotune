@@ -39,7 +39,7 @@ class MarketParametersState extends State<MarketParameters> {
   }
 
   void getData() {
-    getStrategySimple(widget.id).then((res) {
+    RobotApi.getStrategySimple(widget.id).then((res) {
       print(res);
       if (res.code == 200) {
         setState(() {
@@ -76,7 +76,7 @@ class MarketParametersState extends State<MarketParameters> {
       "maxPrice": double.parse(_maxPriceController.text.trim()),
       "isClosePosition": check
     };
-    postStrategyGridUpdate(params).then((res) {
+    RobotApi.postStrategyGridUpdate(params).then((res) {
       print(res);
       if (res.code == 200) {
         showToast('修改参数成功');

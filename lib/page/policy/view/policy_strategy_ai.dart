@@ -354,7 +354,7 @@ class policyAiState extends State<policyAi> {
                               'exchange': widget.dataMap['exchange_name'],
                               "totalSum": value.toString()
                             };
-                            getGridParams(data).then((res) {
+                            RobotApi.getGridParams(data).then((res) {
                               if (res.code == 200) {
                                 setState(() {
                                   minMoneysData = res.data;

@@ -184,7 +184,7 @@ class marketHeader extends StatelessWidget {
       "strategy_id": detailData.strategyId,
       "balance": int.parse(balance)
     };
-    SetBalance(params).then((res) {
+    RobotApi.setBalance(params).then((res) {
       if (res.code != 0) {
         showToast(res.msg);
       } else {
@@ -199,7 +199,7 @@ class marketHeader extends StatelessWidget {
   _setApi(callback) {
     var api = _apiController.text.trim();
     var params = {"strategy_id": detailData.strategyId, "api_key": api};
-    SetApi(params).then((res) {
+    RobotApi.setApi(params).then((res) {
       if (res.code != 0) {
         showToast(res.msg);
       } else {

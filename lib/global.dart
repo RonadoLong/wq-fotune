@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:package_info/package_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wq_fotune/api/common.dart';
+import 'package:wq_fotune/api/exchange.dart';
 import 'package:wq_fotune/model/user_info.dart';
 
-import 'api/home.dart';
-import 'api/mine.dart';
 import 'common/EventBus.dart';
 import 'common/load_recommned.dart';
 import 'utils/ui_data.dart';
@@ -162,7 +162,7 @@ class Global {
 
   static void checkVersion(context) async {
     var params = Device.isAndroid ? 1 : 2;
-    MineAPI.getAppVersion(params).then((res) async {
+    CommonApi.getAppVersion(params).then((res) async {
       if (res.code == 0) {
         PackageInfo packageInfo = await PackageInfo.fromPlatform();
         String version = packageInfo.version;
@@ -187,7 +187,7 @@ class Global {
   }
 
   static getTick() async {
-    getTicks().then((res) {
+    ExchangeApi.getTicks().then((res) {
       print('${res.data}');
       if (res.code == 0) {
         marketData = res.data;

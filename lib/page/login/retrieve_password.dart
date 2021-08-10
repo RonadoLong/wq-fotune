@@ -41,7 +41,7 @@ class RetrievePasswordState extends State<RetrievePasswordPage> {
       "password": userPassData,
       "confirm_password": userAgainPassData
     };
-    ForgetPassword(params).then((res) {
+    UserApi.forgetPassword(params).then((res) {
       if (res.code != 0) {
         showToast(res.msg);
       } else {

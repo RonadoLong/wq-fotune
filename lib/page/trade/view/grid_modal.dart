@@ -484,7 +484,7 @@ void showGridModal(
                                                 'exchange': dataMap['exchange'],
                                                 "totalSum": value.toString()
                                               };
-                                              getGridParams(data).then((res) {
+                                              RobotApi.getGridParams(data).then((res) {
                                                 if (res.code == 200) {
                                                   state(() {
                                                     minMoneysData = res.data;
@@ -743,7 +743,7 @@ void _getAutoGridParams(dataMap, callBack) {
       "minPrice": infiniteManualMinPrice.text.trim(),
       "profitRate": infiniteManuaProfitRate.text.trim() + '%',
     };
-    getAutoGridParams(params).then((res) {
+    RobotApi.getAutoGridParams(params).then((res) {
       if (res.code == 200) {
         callBack(res.data);
       } else {

@@ -27,7 +27,7 @@ class Http {
 
   Http() {
     _options = new BaseOptions(
-      baseUrl: "$host/api/v1/",
+      baseUrl: "$host/",
       connectTimeout: 15000,
       receiveTimeout: 15000,
       sendTimeout: 15000,

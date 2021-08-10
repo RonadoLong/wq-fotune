@@ -114,7 +114,7 @@ class TransactionPageState extends State<TransactionPage> {
     if (userInfo == null) {
       return;
     }
-    getStrategyList(userInfo.userId, 0, 100).then((res) {
+    RobotApi.getStrategyList(userInfo.userId, 0, 100).then((res) {
       if (res.code == 200) {
         setState(() {
           list = res.data['strategies'];
@@ -240,7 +240,7 @@ class TransactionPageState extends State<TransactionPage> {
         "isClosePosition": isClosePosition
       };
       showLoading();
-      postGridStop(params).then((res) {
+      RobotApi.postGridStop(params).then((res) {
         dismissLoad();
         if (res.code == 200) {
           showToast("删除成功");

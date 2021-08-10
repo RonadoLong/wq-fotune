@@ -46,7 +46,7 @@ class TransactionDetailsState extends State<TransactionDetails> {
   }
 
   loadData() async {
-    getStrategyDetails(widget.id).then((res) {
+    RobotApi.getStrategyDetails(widget.id).then((res) {
       print('res$res');
       if (res.code == 200) {
         setState(() {

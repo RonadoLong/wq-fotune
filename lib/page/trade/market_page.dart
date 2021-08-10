@@ -86,7 +86,7 @@ class MarketPageState extends State<MarketPage> {
     if (userInfo == null) {
       return;
     }
-    getStrategyList(userInfo.userId, 0, 100).then((res) {
+    RobotApi.getStrategyList(userInfo.userId, 0, 100).then((res) {
       if (res.code == 200) {
         dataList = res.data['strategies'];
       } else {
@@ -99,7 +99,7 @@ class MarketPageState extends State<MarketPage> {
   }
 
   getStrategyTypesData() {
-    getStrategyTypes(0, 100).then((res) {
+    RobotApi.getStrategyTypes(0, 100).then((res) {
       if (res.code == 200) {
         setState(() {
           gridTypesList = res.data['gridTypes'];
@@ -127,7 +127,7 @@ class MarketPageState extends State<MarketPage> {
   }
 
   getMinMoneyData(params) async {
-    getMinMoney(params).then((res) {
+    RobotApi.getMinMoney(params).then((res) {
       print(res);
       if (res.code == 200) {
         var minMoneyData = res.data['minMoney'];
@@ -151,7 +151,7 @@ class MarketPageState extends State<MarketPage> {
       "totalSum": minMoney.toString()
 //      "totalSum": marketAccountData['total_usdt'].toString()
     };
-    getGridParams(data).then((res) {
+    RobotApi.getGridParams(data).then((res) {
       print('计算网格需要多少资金');
       print(res);
       print('计算网格需要多少资金');
@@ -171,7 +171,7 @@ class MarketPageState extends State<MarketPage> {
   }
 
   void _postGridStartup(callBack, params) async {
-    postGridStartup(params).then((res) {
+    RobotApi.postGridStartup(params).then((res) {
       print('res$res');
       if (res.code == 200) {
         Global.eventBus.emit("createStrategy", null);
@@ -199,7 +199,7 @@ class MarketPageState extends State<MarketPage> {
     if (isAI) {
       params["isAI"] = isAI.toString();
     }
-    getAutoGridParams(params).then((res) {
+    RobotApi.getAutoGridParams(params).then((res) {
       if (res.code == 200) {
         setState(() {
           infiniteAiData = res.data;
@@ -410,7 +410,7 @@ class MarketPageState extends State<MarketPage> {
         "gsid": item['id'],
         "isClosePosition": isClosePosition
       };
-      postGridStop(params).then((res) {
+      RobotApi.postGridStop(params).then((res) {
         if (res.code == 200) {
           showToast("删除成功");
           _controller.callRefresh();

@@ -35,7 +35,7 @@ class EditPassWordState extends State<EditPassWordPage> {
       "password": passwordData,
       "confirm_password": confirm_passwordData
     };
-    ResetPassword(params).then((res) {
+    UserApi.resetPassword(params).then((res) {
       if (res.code != 0) {
         showToast(res.msg);
       } else {

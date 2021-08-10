@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:wq_fotune/api/exchange.dart';
 import 'package:wq_fotune/common/CustomAppBar.dart';
 import 'package:wq_fotune/common/EventBus.dart';
 import 'package:wq_fotune/common/NavigatorUtils.dart';
@@ -14,7 +15,6 @@ import 'package:wq_fotune/page/home/view/strategy_details_body.dart';
 import 'package:wq_fotune/page/mine/view/del_modal_view.dart';
 import 'package:wq_fotune/utils/toast-utils.dart';
 import 'package:http/http.dart' as http;
-import 'package:wq_fotune/api/home.dart';
 
 class StrategyDetails extends StatefulWidget {
   final int id;
@@ -52,7 +52,7 @@ class StrategyDetailsState extends State<StrategyDetails> {
   }
 
   _getData() async {
-    getStrategyDetail(widget.id).then((res) {
+    ExchangeApi.getStrategyDetail(widget.id).then((res) {
       if (res.code == 0) {
         var symbolData = res.data['symbol'].split(",");
         var remarkreplace = res.data["remark"].replaceAll(" ", ",");
@@ -68,7 +68,7 @@ class StrategyDetailsState extends State<StrategyDetails> {
 
   _postStrategy(callback, balance) {
     var params = {"id": data['id'], "balance": balance};
-    createStrategy(params).then((res) {
+    ExchangeApi.createStrategy(params).then((res) {
       if (res.code != 0) {
         showToast(res.msg);
       } else {

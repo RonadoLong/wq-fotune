@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wq_fotune/api/mine.dart';
+import 'package:wq_fotune/api/common.dart';
 import 'package:wq_fotune/common/CustomAppBar.dart';
 import 'package:wq_fotune/componets/circular_load.dart';
 import 'package:wq_fotune/page/mine/secret_page.dart';
@@ -24,7 +24,7 @@ class AboutPageState extends State<AboutdPage> {
 
   loadData() async {
     var params = Device.isAndroid ? 1 : 2;
-    MineAPI.getAppVersion(params).then((res) {
+    CommonApi.getAppVersion(params).then((res) {
       if (res.code == 0) {
         setState(() {
           data = res.data;

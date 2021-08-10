@@ -76,7 +76,7 @@ class _ForgetPWDPageState extends State<ForgetPWDPage> {
                               return;
                             }
                             var params = {"phone": phone.toString()};
-                            PostCode(params).then((res) {
+                            UserApi.postCode(params).then((res) {
                               print("获取验证码 =========== $res");
                               if (res.code == 0) {
                                 showToast("获取成功");

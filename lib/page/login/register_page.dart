@@ -62,7 +62,7 @@ class RegisterState extends State<RegisterPage> {
       "invitation_code": invitation_code,
       "validate_code": validate_code
     };
-    userRegister(params).then((res) {
+    UserApi.userRegister(params).then((res) {
       if (res.code != 0) {
         showToast(res.msg);
       } else {
@@ -254,7 +254,7 @@ class RegisterState extends State<RegisterPage> {
                                 return;
                               }
                               var params = {"phone": phone.toString()};
-                              PostCode(params).then((res) {
+                              UserApi.postCode(params).then((res) {
                                 print("获取验证码 =========== $res");
                                 if (res.code == 0) {
                                   showToast("获取成功");
