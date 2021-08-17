@@ -279,6 +279,7 @@ class MinePageState extends State<MinePage> {
             MaterialPageRoute(builder: (context) => new ManageApiPage()));
         break;
       case 2:
+        return;
         Navigator.push(context,
             new MaterialPageRoute(builder: (context) => new SecretPage()));
         break;
