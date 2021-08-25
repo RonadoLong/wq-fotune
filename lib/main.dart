@@ -41,6 +41,7 @@ class MainApp extends StatelessWidget {
     initUtils();
     return MaterialApp(
       title: UIData.appName,
+      debugShowCheckedModeBanner: false,
       builder: (context, child) {
         return GestureDetector(
           onTap: () {

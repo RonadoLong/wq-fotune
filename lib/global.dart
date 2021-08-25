@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:package_info/package_info.dart';
+// import 'package:package_info/package_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wq_fotune/api/common.dart';
 import 'package:wq_fotune/api/exchange.dart';
@@ -164,17 +164,17 @@ class Global {
     var params = Device.isAndroid ? 1 : 2;
     CommonApi.getAppVersion(params).then((res) async {
       if (res.code == 0) {
-        PackageInfo packageInfo = await PackageInfo.fromPlatform();
-        String version = packageInfo.version;
-        print("${res.data["versionName"]} ======= $version");
-        if (res.data["versionName"] == version) {
-          return;
-        }
-        if (res.data["isIgnorable"] == true) {
-          return;
-        }
-        isShowVersion = false;
-        UpdateManager.openURL(context, res.data);
+        // PackageInfo packageInfo = await PackageInfo.fromPlatform();
+        // String version = packageInfo.version;
+        // print("${res.data["versionName"]} ======= $version");
+        // if (res.data["versionName"] == version) {
+        //   return;
+        // }
+        // if (res.data["isIgnorable"] == true) {
+        //   return;
+        // }
+        // isShowVersion = false;
+        // UpdateManager.openURL(context, res.data);
       }
     });
   }

@@ -47,12 +47,12 @@ class MarketChoiceTradeState extends State<MarketChoiceTrade> {
     RobotApi.getSymbols(val).then((res) {
       print("getSymbols ----> $res");
       if (res.code == 0) {
-        var data = res.data.keys.toList();
+        List data = res.data.toList();
         setState(() {
           mapData = data;
-          list = res.data;
-          dataList = res.data[data[0]];
-          selecteList = res.data[data[0]];
+          list = {"usdt": data};
+          dataList = data;
+          selecteList = data;
         });
         sort(storAct);
       } else {
@@ -305,7 +305,7 @@ class MarketChoiceTradeState extends State<MarketChoiceTrade> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  child: _titleWidget(),
+                  // child: _titleWidget(),
                 ),
                 Container(
                   child: Row(
@@ -396,7 +396,7 @@ class MarketChoiceTradeState extends State<MarketChoiceTrade> {
                       color: index == act ? UIData.blue_color : Colors.white,
                       width: 2))),
           margin: EdgeInsets.only(right: 24.0),
-          child: new Text(mapData[index],
+          child: new Text("usdt",
               style: index == act
                   ? TextStyles.MediumGrey3TextSize15
                   : TextStyles.MediumBlackTextSize15),

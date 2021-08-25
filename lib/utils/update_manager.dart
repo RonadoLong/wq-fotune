@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:package_info/package_info.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:wq_fotune/utils/device_utils.dart';
 import 'package:flutter/cupertino.dart';
