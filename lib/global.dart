@@ -45,6 +45,9 @@ class EventUtils {
   static const KeyBoardConfirmEventKey = "KeyBoardConfirmEventKey";
 }
 
+
+Map globalCacheMarketData; //行情数据
+
 class Global {
   static SharedPreferences _prefs;
 
@@ -53,8 +56,6 @@ class Global {
   static Color primaryColor = UIData.primary_color;
 
   static EventBus get eventBus => new EventBus(); //事件
-
-  static Map marketData; //行情数据
 
 // 网络缓存对象
 //static NetCache netCache = NetCache();
@@ -182,22 +183,21 @@ class Global {
   static _getTick() async {
     //获取行情
     getTick();
-    const timeout = const Duration(seconds: 50);
-    Future.delayed(timeout, () => {getTick()});
   }
 
   static getTick() async {
     ExchangeApi.getTicks().then((res) {
-      print('${res.data}');
       if (res.code == 0) {
-        marketData = res.data;
+        globalCacheMarketData = res.data;
+        Global.eventBus.emit("refreshMarket", res.data);
       } else {
-        marketData = {};
+        globalCacheMarketData = {};
       }
     }).catchError((onError) {
       print(onError);
-      getTick();
-      marketData = {};
+      globalCacheMarketData = {};
     });
+    const timeout = const Duration(seconds: 5);
+    Future.delayed(timeout, () => {getTick()});
   }
 }

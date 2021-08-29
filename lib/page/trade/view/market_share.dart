@@ -10,7 +10,6 @@ import 'package:qr_flutter/qr_flutter.dart';
 import 'package:share_extend/share_extend.dart';
 import 'package:wq_fotune/common/EventBus.dart';
 import 'package:wq_fotune/page/common/CommonWidget.dart';
-import 'package:wq_fotune/utils/screen/int_extension.dart';
 import 'dart:ui' as ui;
 import 'package:http/http.dart' as http;
 
@@ -75,7 +74,12 @@ class MarketShare {
     var T;
     var url;
     if(item['anchorSymbol'].contains('usdt')){
-      T = double.parse(item['totalProfit']).toStringAsFixed(2);
+      print("$item");
+      if (item['totalProfit'] != "") {
+        T = double.parse(item['totalProfit']).toStringAsFixed(2);
+      } else {
+        T = 0.0;
+      }
     }else{
       T = double.parse(item['totalProfit']);
     }
@@ -105,45 +109,45 @@ class MarketShare {
                     ),
                   ),
                   Positioned(
-                    bottom: 335.px,
-                    right: 84.px,
+                    bottom: 335,
+                    right: 84,
                     child: Container(
-                      width: 210.px,
-                      height: 60.px,
+                      width: 210,
+                      height: 60,
                       child: Text(
                         "${item['annualReturn']}%",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.redAccent,
-                          fontSize: 32.px,
+                          fontSize: 32,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
                     ),
                   ),
                   Positioned(
-                    bottom: 215.px,
-                    right: 88.px,
+                    bottom: 215,
+                    right: 88,
                     child: Container(
-                      width: 200.px,
-                      height: 60.px,
+                      width: 200,
+                      height: 60,
                       child: Text(
                         "${T}${item['anchorSymbol'].toUpperCase()}(${item["rateReturn"]}%)",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.redAccent,
-                          fontSize: 15.px,
+                          fontSize: 15,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
                   ),
                   Positioned(
-                    bottom: 135.px,
-                    left: 52.px,
+                    bottom: 135,
+                    left: 52,
                     child: Container(
-                      width: 90.px,
-                      height: 38.px,
+                      width: 90,
+                      height: 38,
                       child: Text(
                         "${item["totalSum"]}",
                         textAlign: TextAlign.center,
@@ -155,11 +159,11 @@ class MarketShare {
                     ),
                   ),
                   Positioned(
-                    bottom: 135.px,
-                    left: 145.px,
+                    bottom: 135,
+                    left: 145,
                     child: Container(
-                      width: 90.px,
-                      height: 38.px,
+                      width: 90,
+                      height: 38,
                       child: Text(
                         "${item['symbol'].toUpperCase()}",
                         textAlign: TextAlign.center,
@@ -171,11 +175,11 @@ class MarketShare {
                     ),
                   ),
                   Positioned(
-                    bottom: 135.px,
-                    left: 235.px,
+                    bottom: 135,
+                    left: 235,
                     child: Container(
-                      width: 90.px,
-                      height: 38.px,
+                      width: 90,
+                      height: 38,
                       child: Text(
                         "${item['tradeCount']}",
                         textAlign: TextAlign.center,
@@ -188,11 +192,11 @@ class MarketShare {
                   ),
                   Positioned(
                     bottom: 0,
-                    left: 50.px,
+                    left: 50,
                     child: QrImage(
                       data: url,
                       version: QrVersions.auto,
-                      size: 110.px,
+                      size: 110,
                       foregroundColor: Colors.blueGrey,
                     ),
                   ),

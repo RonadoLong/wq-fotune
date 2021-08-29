@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wq_fotune/common/EventBus.dart';
+import 'package:wq_fotune/global.dart';
 import 'package:wq_fotune/model/ticker.dart';
 import 'package:wq_fotune/page/common/CommonWidget.dart';
 import 'package:wq_fotune/res/styles.dart';
@@ -25,33 +26,45 @@ class MarketItem extends StatefulWidget {
 }
 
 class _MarketItemState extends State<MarketItem> {
-  var _bus = new EventBus();
-  // var lowest = "0";
-  // var highest = "0";
+  String lowest = "0";
+  String highest = "0";
+  String last = "0";
   MarketShare _share = MarketShare();
 
   @override
   void initState() {
     super.initState();
     // 监听刷新行情的事件
-//     _bus.on("refreshMarket", (tList) {
-//       (tList as List<Ticker>)?.forEach((t) {
-//         if (widget.item != null) {
-//           var symbol = "${widget.item['symbol']}";
-// //          print("refreshMarket === ${symbol} --- ${t.symbol}");
-//           if (t.symbol.replaceAll("-", "").toLowerCase() ==
-//               symbol.replaceAll("-", "").toLowerCase()) {
-//             if (this.mounted) {
-//               setState(() {
-//                 lowest = "${t.low}";
-//                 highest = "${t.last}";
-// //                 highest = "${t.high}";
-//               });
-//             }
-//           }
-//         }
-//       });
-//     });
+    Global.eventBus.on("refreshMarket", (tList) {
+      // print("refreshMarket: $tList");
+      if (tList != null) {
+        var exchange = widget.item["exchange"];
+        var symbol = widget.item["symbol"];
+        var anchorSymbol = widget.item["anchorSymbol"];
+        if (symbol.contains('usdt')) {
+          symbol = symbol.replaceFirst('usdt', '-usdt').toUpperCase();
+        } else if (symbol.contains('btc')) {
+          symbol = symbol.replaceFirst('btc', '-btc').toUpperCase();
+        }
+        var dataMap = tList[exchange][anchorSymbol][symbol];
+        // print(
+        //     "refreshMarket: $dataMap symbol: $symbol anchorSymbol: $anchorSymbol");
+        if (this.mounted) {
+          setState(() {
+            lowest = "${dataMap["low"]}";
+            last = "${dataMap["last"]}";
+            // print("lowest:$lowest last:$last");
+          });
+        }
+      }
+
+    });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
   }
 
   @override
@@ -188,32 +201,32 @@ class _MarketItemState extends State<MarketItem> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                Device.isWeb
-                    ? Container()
-                    : GestureDetector(
-                        onTap: () {
-                          _share.showModel(
-                              context, widget.item, widget.recommend);
-                          _share.shareImage();
-                        },
-                        child: Container(
-                          width: 80.0,
-                          padding: EdgeInsets.fromLTRB(0, 4.0, 0, 4.0),
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: UIData.blue_color, width: 1),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(3.0))),
-                          child: Text(
-                            '分享',
-                            style: TextStyles.RegularBlueTextSize14,
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ),
-                Padding(
-                  padding: EdgeInsets.only(left: 30),
-                ),
+                // Device.isWeb
+                //     ? Container()
+                //     : GestureDetector(
+                //         onTap: () {
+                //           _share.showModel(
+                //               context, widget.item, widget.recommend);
+                //           _share.shareImage();
+                //         },
+                //         child: Container(
+                //           width: 80.0,
+                //           padding: EdgeInsets.fromLTRB(0, 4.0, 0, 4.0),
+                //           decoration: BoxDecoration(
+                //               border: Border.all(
+                //                   color: UIData.blue_color, width: 1),
+                //               borderRadius:
+                //                   BorderRadius.all(Radius.circular(3.0))),
+                //           child: Text(
+                //             '分享',
+                //             style: TextStyles.RegularBlueTextSize14,
+                //             textAlign: TextAlign.center,
+                //           ),
+                //         ),
+                //       ),
+                // Padding(
+                //   padding: EdgeInsets.only(left: 30),
+                // ),
                 GestureDetector(
                   onTap: () {
                     //详情的逻辑
@@ -278,7 +291,7 @@ class _MarketItemState extends State<MarketItem> {
                 padding: EdgeInsets.only(bottom: 4),
               ),
               Text(
-                widget.item['low'],
+                lowest ,
                 style: TextStyles.MediumBlackTextSize16,
               ),
             ],
@@ -308,7 +321,7 @@ class _MarketItemState extends State<MarketItem> {
                 padding: EdgeInsets.only(bottom: 4),
               ),
               Text(
-                widget.item['last'],
+                last,
                 style: TextStyles.MediumBlackTextSize16,
               ),
             ],

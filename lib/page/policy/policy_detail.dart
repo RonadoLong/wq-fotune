@@ -51,8 +51,6 @@ class policyAddState extends State<policyAdd> {
 
   final FocusNode verifyNode = FocusNode();
 
-  final marketData = Global.marketData;
-
   @override
   void initState() {
     super.initState();
@@ -62,14 +60,15 @@ class policyAddState extends State<policyAdd> {
     if (widget.exchangeApiList != null) {
       exchangeApiList = widget.exchangeApiList;
       Map selectAccount = exchangeApiList[0];
-      print('当前选择的账户: $selectAccount');
+      // print('当前选择的账户: $selectAccount');
       save("exchange_name", selectAccount);
       marketAccountData = selectAccount;
     }
 
     var exchange_name =
         marketAccountData['exchange_name'].toString().toLowerCase();
-    dataMap = marketData[exchange_name]['usdt']['ETH-USDT'];
+    // print("当前交易所:$globalCacheMarketData");
+    dataMap =globalCacheMarketData[exchange_name]['usdt']['ETH-USDT'];
     // dataMap = marketData[0];
     get('symbolObject').then((val) {
       currentSymbolParams = {
@@ -106,13 +105,25 @@ class policyAddState extends State<policyAdd> {
 
     // 监听刷新行情的事件
     Global.eventBus.on("refreshMarket", (tList) {
-      (tList as List<Ticker>)?.forEach((t) {
-        if (t.symbol.contains(currentSymbol["symbol"])) {
+      if (tList != null) {
+        var exchange = marketAccountData['exchange_name'].toString().toLowerCase();
+        var symbol = currentSymbol["symbol"];
+        var anchorSymbol = "usdt";
+        if (symbol.contains('usdt')) {
+          symbol = symbol.replaceFirst('usdt', '-usdt').toUpperCase();
+        } else if (symbol.contains('btc')) {
+          symbol = symbol.replaceFirst('btc', '-btc').toUpperCase();
+        }
+        var dataMap = tList[exchange][anchorSymbol][symbol];
+        if (this.mounted) {
           setState(() {
-            ticker = t;
+            ticker = Ticker()
+              ..change = dataMap['change'] // 加载 map['symbol'] 行情
+              ..last = dataMap['last'] // 加载 map['symbol'] 行情
+              ..symbol = dataMap['symbol'];
           });
         }
-      });
+      }
     });
   }
 

@@ -31,7 +31,7 @@ class TransactionPageState extends State<TransactionPage> {
   UserInfo userInfo = Global.getUserInfo();
   Map dataMap;
   EasyRefreshController _controller = EasyRefreshController();
-  Duration durationTime = Duration(seconds: 1);
+  Duration durationTime = Duration(seconds: 5);
   Timer timer;
 
   @override
@@ -72,43 +72,40 @@ class TransactionPageState extends State<TransactionPage> {
   }
 
   //数据处理
-  handleData() {
-    timer = new Timer(durationTime, () {
-      var listD = [];
-      final marketData = Global.marketData;
-      if (list.length == 0 || list == null) {
-        setState(() {
-          dataList = [];
-        });
-        return;
-      }
-      list.forEach((item) {
-        var map = {};
-        map = item;
-        var symbol = item['symbol'];
-        if (symbol.contains('usdt')) {
-          symbol = symbol.replaceFirst('usdt', '-usdt').toUpperCase();
-        } else if (item['symbol'].contains('btc')) {
-          symbol = symbol.replaceFirst('btc', '-btc').toUpperCase();
-        }
-        if (marketData == null) {
-          map['low'] = '0';
-          map['last'] = '0';
-        } else {
-          map['low'] = marketData[item['exchange']][item['anchorSymbol']]
-                  [symbol]['low']
-              .toString();
-          map['last'] = marketData[item['exchange']][item['anchorSymbol']]
-                  [symbol]['last']
-              .toString();
-        }
-        listD.add(map);
-      });
-      setState(() {
-        dataList = listD;
-      });
-    });
-  }
+  // handleData() {
+  //   if (timer != null) {
+  //     return;
+  //   }
+  //   timer = new Timer(durationTime, () {
+  //     var listD = [];
+  //     final marketData = Global.marketData;
+  //     if (list.length == 0 || list == null) {
+  //       setState(() {
+  //         dataList = [];
+  //       });
+  //       return;
+  //     }
+  //     list.forEach((item) {
+  //       var map = item;
+  //       var symbol = item['symbol'];
+  //       if (symbol.contains('usdt')) {
+  //         symbol = symbol.replaceFirst('usdt', '-usdt').toUpperCase();
+  //       } else if (item['symbol'].contains('btc')) {
+  //         symbol = symbol.replaceFirst('btc', '-btc').toUpperCase();
+  //       }
+  //       if (marketData == null) {
+  //         map['low'] = '0';
+  //         map['last'] = '0';
+  //       } else {
+  //
+  //       }
+  //       listD.add(map);
+  //     });
+  //     setState(() {
+  //       dataList = listD;
+  //     });
+  //   });
+  // }
 
   loadData() async {
     if (userInfo == null) {
@@ -121,8 +118,9 @@ class TransactionPageState extends State<TransactionPage> {
       if (res.code == 200) {
         setState(() {
           list = res.data['strategies'];
+          dataList = list;
         });
-        handleData();
+        // handleData();
       } else {
         setState(() {
           dataList = [];
@@ -145,22 +143,27 @@ class TransactionPageState extends State<TransactionPage> {
     if (dataList == null) {
       return CircularLoading();
     } else {
-      return CommonRefresh(
-        controller: _controller,
-        sliverList: SliverList(
-          delegate: SliverChildListDelegate(
-            [
-              _buildStrategyHeader(),
-              SizedBox(
-                height: 8,
-              ),
-              _buildStrategyItem()
-            ],
+      return Column(
+        children: [
+          _buildStrategyHeader(),
+          SizedBox(
+            height: 8,
           ),
-        ),
-        onRefresh: () {
-          loadData();
-        },
+          Flexible(
+            flex: 1,
+            child: CommonRefresh(
+              controller: _controller,
+              sliverList: SliverList(
+                delegate: SliverChildListDelegate(
+                  _buildStrategyItem(),
+                ),
+              ),
+              onRefresh: () {
+                loadData();
+              },
+            ),
+          )
+        ],
       );
     }
   }
@@ -178,6 +181,7 @@ class TransactionPageState extends State<TransactionPage> {
   Widget _buildStrategyHeader() {
     return Container(
       color: UIData.white_color,
+      width: double.maxFinite,
       child: new Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -199,14 +203,15 @@ class TransactionPageState extends State<TransactionPage> {
     );
   }
 
-  Widget _buildStrategyItem() {
+  List<Widget> _buildStrategyItem() {
     if (dataList == null || dataList.length == 0) {
-      return _buildLoginAndNotHasAPIView(() {
-        Global.eventBus.emit("changeTabPage", 1);
-      });
+      return [
+        _buildLoginAndNotHasAPIView(() {
+          Global.eventBus.emit("changeTabPage", 1);
+        })
+      ];
     }
     List<Widget> tiles = [];
-    Widget content;
     dataList.forEach((item) {
       tiles.add(MarketItem(
         item: item,
@@ -227,10 +232,8 @@ class TransactionPageState extends State<TransactionPage> {
         },
       ));
     });
-    content = new Column(
-      children: tiles,
-    );
-    return content;
+
+    return tiles;
   }
 
   void isNex(item) {

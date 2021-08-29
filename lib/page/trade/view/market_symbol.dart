@@ -50,7 +50,7 @@ class MarketSymbol extends StatelessWidget {
   }
 
   Widget headerSelect() {
-    print("currentSymbol====${currentSymbol}");
+    // print("currentSymbol====${currentSymbol}");
     return GestureDetector(
       onTap: () {
         onDataChange();
