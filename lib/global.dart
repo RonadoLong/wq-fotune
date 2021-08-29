@@ -12,6 +12,7 @@ import 'package:wq_fotune/model/user_info.dart';
 
 import 'common/EventBus.dart';
 import 'common/load_recommned.dart';
+import 'common/websocket_manager.dart';
 import 'utils/ui_data.dart';
 import 'utils/device_utils.dart';
 import 'utils/update_manager.dart';
@@ -44,7 +45,6 @@ class EventUtils {
   // 初始化完毕事件
   static const KeyBoardConfirmEventKey = "KeyBoardConfirmEventKey";
 }
-
 
 Map globalCacheMarketData; //行情数据
 

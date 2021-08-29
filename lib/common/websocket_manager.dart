@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flustars/flustars.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
-import 'package:wq_fotune/common/EventBus.dart';
 import 'package:wq_fotune/global.dart';
 import 'package:wq_fotune/model/ticker.dart';
 import 'package:wq_fotune/page/common/CommonWidget.dart';
@@ -16,7 +15,7 @@ import 'package:web_socket_channel/io.dart';
 class WebSocketManager {
   static WebSocketChannel channel;
   // String url = "wss://www.ifortune.io/api/v1/quote/ticks/realtime";
-  static String url = 'ws://test.ifortune.io/api/v1/quote/ticks/realtime';
+  static String url = 'wss://yun.mateforce.cn/test/quote/v1/ticks/realtime';
 
   static WebSocketChannel initializeWebSocketChannel(String url) {
     /// todo 运行手机的时候打开
