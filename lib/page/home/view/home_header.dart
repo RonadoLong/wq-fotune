@@ -11,23 +11,22 @@ import 'package:wq_fotune/res/styles.dart';
 import 'package:wq_fotune/utils/ui_data.dart';
 
 class HomeHeader extends StatefulWidget {
+  Map assets;
+  HomeHeader({this.assets});
+
   @override
   _HomeHeaderState createState() => _HomeHeaderState();
 }
 
 class _HomeHeaderState extends State<HomeHeader> {
   UserInfo userInfo;
-  Map data = {};
   var bus = EventBus();
 
   @override
   void initState() {
     super.initState();
-    _getExchangeAssert();
-
     bus.on("login", (arg) {
       loadUserInfo();
-      _getExchangeAssert();
     });
     bus.on("logout", (arg) {
       setState(() {
@@ -36,7 +35,6 @@ class _HomeHeaderState extends State<HomeHeader> {
     });
     handleRefreshWithDuration(() {
       loadUserInfo();
-      _getExchangeAssert();
     }, Duration(seconds: 1));
   }
 
@@ -51,17 +49,6 @@ class _HomeHeaderState extends State<HomeHeader> {
     });
   }
 
-  _getExchangeAssert() async {
-    ExchangeApi.getExchangeAssert().then((res) {
-      if (res.code == 0) {
-        setState(() {
-          data = res.data;
-        });
-      } else {
-        data = {};
-      }
-    });
-  }
 
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -82,12 +69,9 @@ class _HomeHeaderState extends State<HomeHeader> {
                       children: <Widget>[
                         Text('总资产', style: TextStyles.RegularWhiteTextSize14),
                         SizedBox(height: 10),
-                        Text(
-                          data == null
-                              ? ""
-                              : data['asserts'] == null
+                        Text(widget.assets['asserts'] == null
                                   ? ""
-                                  : data['asserts'],
+                                  : widget.assets['asserts'],
                           style: TextStyles.HeavyWhiteTextSize22,
                         ),
                         SizedBox(height: 10),
@@ -98,20 +82,14 @@ class _HomeHeaderState extends State<HomeHeader> {
                               "收益",
                               style: TextStyles.RegularWhiteTextSize14,
                             ),
-                            Text(
-                              data == null
-                                  ? ""
-                                  : data['profit'] == null
+                            Text(widget.assets['profit'] == null
                                       ? ""
-                                      : "+ " + data['profit'],
+                                      : "+ " + widget.assets['profit'],
                               style: TextStyles.RegularWhiteTextSize14,
                             ),
-                            Text(
-                              data == null
-                                  ? ""
-                                  : data['profitPercent'] == null
+                            Text(widget.assets['profit_percent'] == null
                                       ? ""
-                                      : "+ " + data['profitPercent'],
+                                      : "+ " + widget.assets['profit_percent'],
                               style: TextStyles.RegularWhiteTextSize14,
                             ),
                           ],
@@ -123,7 +101,7 @@ class _HomeHeaderState extends State<HomeHeader> {
         ),
       ),
       onTap: () {
-        if (data != null) {
+        if (widget.assets != null) {
           Navigator.push(
             context,
             new MaterialPageRoute(builder: (context) => new AccountPage()),

@@ -2,7 +2,6 @@ import 'package:wq_fotune/model/base_resp.dart';
 import 'http_utils.dart';
 
 class MineAPI {
-
   /// 获取交易所信息
   static Future<BaseResp> getExchangeInfo() async {
     var url = "exchange/v1/exchange/info";
@@ -15,6 +14,7 @@ class MineAPI {
   static Future<BaseResp> getExchangeApiList() async {
     var url = "exchange/v1/exchange/api/list";
     var response = await Http().get(url);
+    print("$response");
     var res = BaseResp.fromJson(response);
     return res;
   }

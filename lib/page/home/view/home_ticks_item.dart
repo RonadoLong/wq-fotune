@@ -129,7 +129,7 @@ class _HomeTicksItemState extends State<HomeTicksItem> {
                   duration: Duration(milliseconds: 300),
                   alignment: Alignment.center,
                   child: Text(
-                    '+' + item['rateYear'],
+                    '+' + item['rate_year'],
                     textAlign: TextAlign.center,
                     style: TextStyles.MediumWhiteTextSize13,
                   ),

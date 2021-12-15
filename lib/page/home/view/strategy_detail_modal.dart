@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:oktoast/oktoast.dart';
 import 'package:wq_fotune/componets/fInput_widget.dart';
 import 'package:wq_fotune/componets/custom_btn.dart';
 import 'package:wq_fotune/utils/ui_data.dart';
@@ -41,12 +40,6 @@ void showModal(context, Function onTapCreate) {
                         borderRadius: BorderRadius.circular(6),
                       ),
                     ),
-//                  Container(
-//                    height: 1,
-//                    width: w-60,
-//                    margin: EdgeInsets.only(top: 20),
-//                    color: UIData.border_color,
-//                  ),
                     Container(
                       margin: EdgeInsets.only(top: 20),
                       child: Text(

@@ -9,6 +9,7 @@ import 'package:wq_fotune/componets/refresh.dart';
 import 'package:wq_fotune/global.dart';
 import 'package:wq_fotune/page/home/view/HomeTicksContent.dart';
 import 'package:wq_fotune/page/home/view/download_app.dart';
+import 'package:wq_fotune/page/home/view/home_header.dart';
 import 'package:wq_fotune/page/home/view/home_ticker_header.dart';
 import 'package:wq_fotune/page/home/view/home_ticks_item.dart';
 import 'package:wq_fotune/page/home/view/home_property.dart';
@@ -23,8 +24,8 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  EasyRefreshController _controller;
-
+  EasyRefreshController _controller = EasyRefreshController();
+  Map assets;
   List banners;
   List dataList;
   List exchangeApiList;
@@ -35,7 +36,6 @@ class HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _controller = EasyRefreshController();
     loadData();
     Global.eventBus.on("login", (arg) {
       setState(() {
@@ -71,6 +71,20 @@ class HomePageState extends State<HomePage> {
     });
   }
 
+  _getExchangeAssert() async {
+    ExchangeApi.getExchangeAssert().then((res) {
+      if (res.code == 0) {
+        setState(() {
+          assets = res.data;
+          print("assets: $assets");
+        });
+      } else {
+        assets = {};
+      }
+    });
+  }
+
+
   loadData() async {
     if (userInfo != null) {
       MineAPI.getExchangeApiList().then((res) {
@@ -83,6 +97,7 @@ class HomePageState extends State<HomePage> {
     }
     _loadCarousels();
     _getExchangeSymbolRank();
+    _getExchangeAssert();
   }
 
   _getExchangeSymbolRank() async {
@@ -104,10 +119,6 @@ class HomePageState extends State<HomePage> {
     return HomeProperty(
       dataList: exchangeApiList == null ? [] : exchangeApiList,
     );
-  }
-
-  Widget _builddownloadAPP() {
-    return DownloadApp();
   }
 
   Widget _buildBanner() {
@@ -152,6 +163,7 @@ class HomePageState extends State<HomePage> {
         delegate: SliverChildListDelegate(
           [
             _buildBanner(),
+            HomeHeader(assets: assets),
             _buildProperty(),
             HomeTickerHeader(),
             _buildTickers(),

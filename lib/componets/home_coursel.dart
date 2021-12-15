@@ -46,23 +46,18 @@ class _HomeBannerState extends State<HomeBanner> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Container(
-          height: 140.0,
-          margin: EdgeInsets.all(8),
-          child: Swiper(
-            itemBuilder: _swiperBuilder,
-            itemCount: widget.banners.length,
-            scale: 0.95,
-            scrollDirection: Axis.horizontal,
-            autoplay: true,
-            duration: 1000,
-            onTap: (index) => () {},
-          ),
-        ),
-        HomeHeader(),
-      ],
+    return Container(
+      height: 140.0,
+      margin: EdgeInsets.all(8),
+      child: Swiper(
+        itemBuilder: _swiperBuilder,
+        itemCount: widget.banners.length,
+        scale: 0.95,
+        scrollDirection: Axis.horizontal,
+        autoplay: true,
+        duration: 1000,
+        onTap: (index) => () {},
+      ),
     );
   }
 }

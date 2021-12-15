@@ -399,7 +399,7 @@ class MarketPageState extends State<MarketPage> {
       };
       RobotApi.postGridStop(params).then((res) {
         if (res.code == 200) {
-          showToast("删除成功");
+          showToast(res.msg);
           _controller.callRefresh();
           this.loadData();
         } else {
