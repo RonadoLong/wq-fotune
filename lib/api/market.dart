@@ -1,14 +1,15 @@
 
 import 'package:dio/dio.dart';
+import 'package:wq_fotune/model/base_resp.dart';
+
+import 'http_utils.dart';
 
 class MarketApi {
-  static Future<dynamic> getSwapPrice() async {
-    try {
-      Response response = await Dio().get("https://www.okex.me/api/swap/v3/instruments/ticker");
-      return response;
-    } catch (e) {
-      print(e);
-      return null;
-    }
+  /// 获取交易所信息
+  static Future<BaseResp> getKline({String symbol, String interval}) async {
+    var url = "quote/v1/kline?symbol=${symbol.toLowerCase()}&period=$interval" ;
+    var response = await Http().get(url);
+    var res = BaseResp.fromJson(response);
+    return res;
   }
 }

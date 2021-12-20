@@ -77,8 +77,11 @@ void showModelWithContentView(
           textAlign: TextAlign.center,
         ),
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(28),
-            side: BorderSide(color: UIData.border_color)),
+          borderRadius: BorderRadius.circular(28),
+          side: BorderSide(
+            color: UIData.border_color,
+          ),
+        ),
         content: Center(heightFactor: 1, child: contendView),
         actions: <Widget>[
           Container(

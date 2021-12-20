@@ -9,10 +9,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wq_fotune/api/common.dart';
 import 'package:wq_fotune/api/exchange.dart';
 import 'package:wq_fotune/model/user_info.dart';
+import 'package:wq_fotune/page/kline/websocket.dart';
 
 import 'common/EventBus.dart';
 import 'common/load_recommned.dart';
-import 'common/websocket_manager.dart';
 import 'utils/ui_data.dart';
 import 'utils/device_utils.dart';
 import 'utils/update_manager.dart';
@@ -73,6 +73,7 @@ class Global {
     _prefs = await SharedPreferences.getInstance();
     userInfo = getUserInfo();
     getRecommend();
+    WebSocketUtils(userInfo?.userId).initChannel();
     // WebSocketManager.connectWS();
 
     LogUtil.init(isDebug: true);
@@ -197,7 +198,7 @@ class Global {
       print(onError);
       globalCacheMarketData = {};
     });
-    const timeout = const Duration(seconds: 5);
-    Future.delayed(timeout, () => {getTick()});
+    // const timeout = const Duration(seconds: 5);
+    // Future.delayed(timeout, () => {getTick()});
   }
 }

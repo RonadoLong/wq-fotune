@@ -69,9 +69,7 @@ class _HomeHeaderState extends State<HomeHeader> {
                       children: <Widget>[
                         Text('总资产', style: TextStyles.RegularWhiteTextSize14),
                         SizedBox(height: 10),
-                        Text(widget.assets['asserts'] == null
-                                  ? ""
-                                  : widget.assets['asserts'],
+                        Text(widget.assets != null ? widget.assets['asserts'] : "",
                           style: TextStyles.HeavyWhiteTextSize22,
                         ),
                         SizedBox(height: 10),
@@ -82,12 +80,12 @@ class _HomeHeaderState extends State<HomeHeader> {
                               "收益",
                               style: TextStyles.RegularWhiteTextSize14,
                             ),
-                            Text(widget.assets['profit'] == null
+                            Text(widget.assets == null
                                       ? ""
                                       : "+ " + widget.assets['profit'],
                               style: TextStyles.RegularWhiteTextSize14,
                             ),
-                            Text(widget.assets['profit_percent'] == null
+                            Text(widget.assets == null
                                       ? ""
                                       : "+ " + widget.assets['profit_percent'],
                               style: TextStyles.RegularWhiteTextSize14,

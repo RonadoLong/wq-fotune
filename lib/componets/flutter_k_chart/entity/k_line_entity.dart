@@ -1,6 +1,3 @@
-
-
-
 import '../entity/k_entity.dart';
 
 class KLineEntity extends KEntity {
@@ -13,6 +10,16 @@ class KLineEntity extends KEntity {
   int count;
   int id;
 
+  KLineEntity({
+    this.open,
+    this.high,
+    this.low,
+    this.close,
+    this.vol,
+    this.amount,
+    this.count,
+  });
+
   KLineEntity.fromJson(Map<String, dynamic> json) {
     open = (json['open'] as num)?.toDouble();
     high = (json['high'] as num)?.toDouble();
@@ -24,7 +31,7 @@ class KLineEntity extends KEntity {
     id = (json['id'] as num)?.toInt();
   }
 
-  Map<String, dynamic> toJson(){
+  Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['open'] = this.open;

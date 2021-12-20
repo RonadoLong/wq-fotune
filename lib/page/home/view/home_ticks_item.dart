@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:wq_fotune/componets/flutter_k_chart/utils/date_format_util.dart';
 import 'package:wq_fotune/global.dart';
 import 'package:wq_fotune/page/common/CommonWidget.dart';
+import 'package:wq_fotune/page/kline/kline_page.dart';
+import 'package:wq_fotune/page/kline/kline_page1.dart';
 import 'package:wq_fotune/res/styles.dart';
 import 'package:wq_fotune/utils/ui_data.dart';
 
@@ -140,7 +143,11 @@ class _HomeTicksItemState extends State<HomeTicksItem> {
         ),
       ),
       onTap: () {
-        Global.eventBus.emit('goMarket');
+        // Global.eventBus.emit('goMarket');
+        var symbol = item['symbol'].toString().replaceAll("-", "");
+        print("symbol: $symbol");
+        Navigator.push(context,
+            new MaterialPageRoute(builder: (context) => new KlinePager1(symbol: symbol,)));
       },
     );
   }

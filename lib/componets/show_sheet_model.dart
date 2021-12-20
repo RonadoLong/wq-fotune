@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wq_fotune/page/mine/view/flat_modal_view.dart';
 
 void showSheet(context) {
   showModalBottomSheet(
@@ -28,3 +29,4 @@ void showSheet(context) {
     },
   );
 }
+

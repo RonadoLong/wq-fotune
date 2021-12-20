@@ -4,10 +4,10 @@ class ChartColors {
   ChartColors._();
 
   //背景颜色
-//  static const Color bgColor = Color(0xff0D141E);
-  static const Color bgColor = Color(0xffC9B885);
+ // static const Color bgColor = Color(0xff0D141E);
+  static const Color bgColor = Color(0xffffffff);
   static const Color kLineColor = Color(0xff4C86CD);
-  static const Color gridColor = Color(0xff4c5c74);
+  static Color gridColor = Color(0xff4c5c74).withOpacity(0.1);
   static const List<Color> kLineShadowColor = [Color(0x554C86CD), Color(0x00000000)]; //k线阴影渐变
   static const Color ma5Color = Color(0xffC9B885);
   static const Color ma10Color = Color(0xff6CB0A6);
@@ -28,22 +28,25 @@ class ChartColors {
   static const Color yAxisTextColor = Color(0xff60738E); //右边y轴刻度
   static const Color xAxisTextColor = Color(0xff60738E); //下方时间刻度
 
-  static const Color maxMinTextColor = Color(0xffffffff); //最大最小值的颜色
+  static const Color maxMinTextColor = Color(0xff60738E); //最大最小值的颜色
 
   //深度颜色
-  static const Color depthBuyColor = Color(0xff60A893);
+  static const Color depthBuyColor = Color(0xff4DAA90);
   static const Color depthSellColor = Color(0xffC15866);
+  static const Color depthTextColor = Color(0xff6C7A86);
 
   //选中后显示值边框颜色
   static const Color markerBorderColor = Color(0xff6C7A86);
 
   //选中后显示值背景的填充颜色
-  static const Color markerBgColor = Color(0xff0D1722);
+  // static const Color markerBgColor = Color(0xff0D1722);
+  static  Color markerBgColor = Color(0xff6C7A86);
+
 
   //实时线颜色等
-  static const Color realTimeBgColor = Color(0xff0D1722);
-  static const Color rightRealTimeTextColor = Color(0xff4C86CD);
-  static const Color realTimeTextBorderColor = Color(0xffffffff);
+  static const Color realTimeBgColor = Color(0xff6C7A86);
+  static const Color rightRealTimeTextColor = Color(0xffffffff);
+  static const Color realTimeTextBorderColor = Color(0xff6C7A86);
   static const Color realTimeTextColor = Color(0xffffffff);
 
   //实时线
@@ -52,8 +55,7 @@ class ChartColors {
 
   static const Color simpleLineUpColor = Color(0xff6CB0A6);
   static const Color simpleLineDnColor = Color(0xffC15466);
-
-
+  
 }
 
 class ChartStyle {
@@ -82,6 +84,7 @@ class ChartStyle {
 
   //网格
   static const int gridRows = 3, gridColumns = 4;
+  // static const int gridRows = 1, gridColumns = 1;
 
   static const double topPadding = 30.0, bottomDateHigh = 20.0, childPadding = 25.0;
 
