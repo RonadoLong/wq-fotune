@@ -57,6 +57,10 @@ class WebSocketUtility {
       subs = {"sub": interval};
       sendMessage(json.encode(subs));
     });
+    Global.eventBus.on("cleanSelectInterval", (_) {
+      subs = {"sub": "1m"};
+      sendMessage(json.encode(subs));
+    });
     openSocket();
   }
 

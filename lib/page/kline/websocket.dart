@@ -16,7 +16,7 @@ class WebSocketUtils {
     DateTime now = DateTime.now();
     purl = purl + (userId ?? now.millisecond.toString());
     turl = turl + (userId ?? now.millisecond.toString());
-    url = inProduction ? purl : turl ;
+    url = inProduction ? purl : purl ;
   }
 
   void initChannel() {

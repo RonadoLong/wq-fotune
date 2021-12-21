@@ -38,6 +38,12 @@ class _KlinePager1State extends State<KlinePager1> {
   String currentInterval = "1分";
 
   @override
+  void dispose() {
+    super.dispose();
+    Global.eventBus.emit("cleanSelectInterval");
+  }
+
+  @override
   void initState() {
     super.initState();
     getData();
